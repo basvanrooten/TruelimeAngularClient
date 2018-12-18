@@ -1,5 +1,5 @@
 import { Resource } from '../base/resource.model';
-import { Serializer } from '../base/interface/serializer.interface';
+import { Serializer } from '../base/interfaces/serializer.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
