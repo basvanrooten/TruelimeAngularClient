@@ -1,7 +1,3 @@
-<mat-toolbar>
-  <span> Login </span>
-</mat-toolbar>
-
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginModel)">
     <formly-form [model]="loginModel" [fields]= "loginFields"

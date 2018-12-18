@@ -6,17 +6,17 @@ export class Account {
 
     formFields(){
         return <FormlyFieldConfig[]>[{
-            key: 'username',
+            key: 'email',
                 type: 'input',
                 templateOptions:{
                   type: 'text',
-                  label: "Username",
-                  placeholder: "Username",
+                  label: "Email",
+                  placeholder: "Email",
                   required: true,
                 },
                 validation:{
                   messages: {
-                    required: 'You need to provide a username'
+                    required: 'You need to provide an email adress'
                   }
                 }
               },
