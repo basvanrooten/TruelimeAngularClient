@@ -1,5 +1,5 @@
 <div>
-  <mat-toolbar color="primary" fxFlex>
+  <mat-toolbar color="primary">
     <mat-toolbar-row>
       <span>{{ appName }}</span>
       <span class="example-spacer"></span>
@@ -9,13 +9,13 @@
   </mat-toolbar>
 </div>
 <div>
-  <mat-toolbar style="height: 10px" color="grey" fxFlex>
+  <mat-toolbar style="height: 10px" color="grey">
     <mat-toolbar-row>
-      <span class="example-fill-remaining-space" style="font-size: 16px">
-        <button [routerLink]="['/home']" routerLinkActive="active">Home</button>
+      <span class="example-fill-remaining-space" style="margin-right: 20px; font-size: 16px">
+        <div [routerLink]="['/home']" routerLinkActive="active">Home</div>
       </span>
-      <span class="example-fill-remaining-space" style="font-size: 16px">
-        <button [routerLink]="['/profile']" routerLinkActive="active">Profile</button>
+      <span class="example-fill-remaining-space" style="margin-right: 20px; font-size: 16px">
+        <div [routerLink]="['/profile']" routerLinkActive="active">Profile</div>
       </span>
     </mat-toolbar-row>
   </mat-toolbar>
