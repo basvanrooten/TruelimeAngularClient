@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/base/header/header.component';
-import { HomeComponent } from '../app/components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -24,6 +24,8 @@ import { MatButtonModule,
   MatToolbarModule
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
+import {SkillService} from "./services/skill.service";
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -42,6 +44,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
 
     // Material components
@@ -63,7 +66,7 @@ const appRoutes: Routes = [
     FlexLayoutModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [SkillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

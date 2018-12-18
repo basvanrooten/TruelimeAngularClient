@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SkillService } from "../../services/skill.service";
+import { Skill } from '../../model/skill.model';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+skills;
+skill;
 
-  constructor() { }
+  constructor(private skillService: SkillService) { }
 
   ngOnInit() {
+    this.skillService.getSkills().subscribe(
+      result => {
+        console.log(result);
+        let resultJSON = JSON.stringify(result);
+        this.skills = resultJSON;
+      });
   }
 
 }
