@@ -29,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent }
 ];

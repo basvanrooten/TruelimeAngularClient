@@ -24,8 +24,8 @@ export class Account {
                 key: 'password',
                 type: 'input',
                 templateOptions:{
-                  type: 'text',
-                  label: "Passoword",
+                  type: 'password',
+                  label: "Password",
                   placeholder: "Password",
                   required: true,
                 },

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  // onSubmit(loginModel: LoginModel){
-  // *Login Logic*
-  // }
+  onSubmit(account: Account){
+    console.log(account)
+  }
 }
