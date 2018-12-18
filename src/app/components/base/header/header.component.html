@@ -1,8 +1,22 @@
-<mat-toolbar color="primary" fxFlex>
-  <mat-toolbar-row>
-    <span>{{ appName }}</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon">favorite</mat-icon>
-    <mat-icon class="example-icon">delete</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div>
+  <mat-toolbar color="primary" fxFlex>
+    <mat-toolbar-row>
+      <span>{{ appName }}</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">favorite</mat-icon>
+      <mat-icon class="example-icon">delete</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div>
+  <mat-toolbar style="height: 10px" color="grey" fxFlex>
+    <mat-toolbar-row>
+      <span class="example-fill-remaining-space" style="font-size: 16px">
+        <button [routerLink]="['/home']" routerLinkActive="active">Home</button>
+      </span>
+      <span class="example-fill-remaining-space" style="font-size: 16px">
+        <button [routerLink]="['/profile']" routerLinkActive="active">Profile</button>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
