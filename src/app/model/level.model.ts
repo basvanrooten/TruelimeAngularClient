@@ -1,13 +1,6 @@
-export class Level {
-  public id: number;
-  public name: string;
-  public weight: number;
-  public skillId: number;
+import { Resource } from '../core/base/resource.model';
 
-  constructor(id: number, name: string, weight: number, skillId: number) {
-    this.id = id;
-    this.name = name;
-    this.weight = weight;
-    this.skillId = skillId;
-  }
+export class Level extends Resource {
+  public weight: Number;
+  public skillId: Number;
 }

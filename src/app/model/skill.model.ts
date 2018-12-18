@@ -1,9 +1,4 @@
-export class Skill {
-  public id: number;
-  public name: string;
+import { Resource } from '../core/base/resource.model';
 
-  constructor(id: number, name: string) {
-    this.id = id;
-    this.name = name;
-  }
+export class Skill extends Resource {
 }

@@ -1,13 +1,6 @@
-export class Certificate {
-  public id: number;
-  public name: string;
-  public date: string;
-  public validUntil: string;
+import { Resource } from '../core/base/resource.model';
 
-  constructor(id: number, name: string, date: string, validUntil: string) {
-    this.id = id;
-    this.name = name;
-    this.date = date;
-    this.validUntil = validUntil;
-  }
+export class Certificate extends Resource {
+  public date: String;
+  public validUntil: String;
 }
