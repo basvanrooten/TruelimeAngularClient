@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Account } from '../../models/account.model'
 
 @Component({
   selector: 'app-login',
@@ -9,27 +10,12 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  //loginModel: 
+  loginModel: Account
   loginFields: Array<FormlyFieldConfig>
   constructor() { 
     this.loginForm = new FormGroup({});
-    //this.loginModel = new Login;
-    this.loginFields = [{
-      key: 'username',
-      type: 'input',
-      templateOptions:{
-        type: 'text',
-        label: "Username",
-        placeholder: "Username",
-        required: true,
-      },
-      validation:{
-        messages: {
-          required: 'You need to provide a username'
-        }
-      }
-    },
-  ];
+    this.loginModel = new Account();
+    this.loginFields = this.loginModel.formFields();
   }
 
   ngOnInit() {
