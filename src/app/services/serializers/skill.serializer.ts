@@ -1,4 +1,4 @@
-import { Skill } from '../../model/skill.model';
+import { Skill } from '../../models/skill.model';
 
 export class SkillSerializer {
     fromJson(json: any): Skill {
