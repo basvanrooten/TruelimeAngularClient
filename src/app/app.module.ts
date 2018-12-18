@@ -23,17 +23,20 @@ import { MatButtonModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {  path: 'home', component: HomeComponent}
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
