@@ -15,4 +15,14 @@ export class SkillSerializer {
             name: skill.name
         };
     }
+
+    fromJsonList(json: any, key: string): Skill[] {
+        const skills: Skill[] = [];
+
+        json[key].forEach((element: any) => {
+          skills.push(this.fromJson(element));
+        });
+
+        return skills;
+    }
 }
