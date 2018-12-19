@@ -2,7 +2,7 @@ import { Resource } from './resource.model';
 import { Serializer } from './interfaces/serializer.interface';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { of, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {Injectable} from "@angular/core";
 
 const httpOptions = {
@@ -44,14 +44,11 @@ export class ResourceService<T extends Resource> {
     }
 
     list(): Observable<T[]> {
-      return this.httpClient
-        .get(`${this.url}/${this.endpoint}`,httpOptions).pipe(
-          map((data: any) => this.convertData(data.items))
+          return this.httpClient
+            .get(`${this.url}/${this.endpoint}`,httpOptions)
+            .pipe(map((data: any) => this.convertData(data))
         );
     }
-  // list() {
-  //   return this.httpClient.get(`${this.url}/${this.endpoint}`, httpOptions);
-  // }
 
     delete(id: Number) {
       return this.httpClient
@@ -59,6 +56,6 @@ export class ResourceService<T extends Resource> {
     }
 
     private convertData(data: any): T[] {
-      return data.map(item => this.serializer.fromJson(item));
+      return this.serializer.fromJsonList(data, 'processedObjects');
     }
 }

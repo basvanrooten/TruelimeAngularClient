@@ -9,6 +9,17 @@ export class SkillSerializer {
         return skill;
     }
 
+    fromJsonList(json: any, key: string): Skill[] {
+
+      let skills: Skill[] = [];
+
+      json[key].forEach(element => {
+        skills.push(this.fromJson(element));
+      });
+
+      return skills;
+  }
+
     toJson(skill: Skill): any {
         return {
             id: skill.id,

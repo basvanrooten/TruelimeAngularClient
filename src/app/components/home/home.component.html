@@ -1,3 +1,14 @@
 <p>
   home works!
 </p>
+<div>
+  <a class="list-group-item clearfix" *ngFor="let skill of skills">
+    <div class="pull-left">
+      <h4 class="list-group-item-heading">{{ skill.name }}</h4>
+      <p class="list-group-item-text">{{ skill.id }}</p>
+    </div>
+    <!--<span class="pull-right">-->
+        <!--<img [src]="artist.imageUrl" alt="{{ artist.name }}" class="img-rounded img-responsive" style="height: 50px;  width: 80px;">-->
+      <!--</span>-->
+  </a>
+</div>
