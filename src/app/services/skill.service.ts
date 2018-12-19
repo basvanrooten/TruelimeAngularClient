@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ResourceService } from '../core/base/resource.service';
 import { Skill } from '../models/skill.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SkillSerializer } from '../services/serializers/skill.serializer';
+import { HttpClient } from '@angular/common/http';
+import { SkillSerializer } from './serializers/skill.serializer';
 
 @Injectable({
   providedIn: 'root'
