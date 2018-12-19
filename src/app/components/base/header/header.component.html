@@ -1,5 +1,5 @@
 <div>
-  <mat-toolbar color="primary">
+  <mat-toolbar class="mat-dialog-container" color="primary">
     <mat-toolbar-row>
       <span>{{ appName }}</span>
       <span class="example-spacer"></span>
@@ -9,7 +9,7 @@
   </mat-toolbar>
 </div>
 <div>
-  <mat-toolbar style="height: 10px" color="grey">
+  <mat-toolbar class="mat-dialog-container" color="grey">
     <mat-toolbar-row>
       <span class="example-fill-remaining-space" style="margin-right: 20px; font-size: 16px">
         <div [routerLink]="['/home']" routerLinkActive="active">Home</div>
