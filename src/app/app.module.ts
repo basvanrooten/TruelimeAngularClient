@@ -9,6 +9,10 @@ import { HomeComponent } from '../app/components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { SkillService } from '../app/services/skill.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -37,6 +41,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
@@ -60,7 +65,7 @@ const appRoutes: Routes = [
     FlexLayoutModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [SkillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

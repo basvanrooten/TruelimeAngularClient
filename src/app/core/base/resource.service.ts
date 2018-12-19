@@ -32,9 +32,9 @@ export class ResourceService<T extends Resource> {
         );
     }
 
-    list(httpParams: HttpParams): Observable<T[]> {
+    list(endPoint: String): Observable<T[]> {
       return this.httpClient
-        .get(`${this.url}/${this.endpoint}?${httpParams.toString}`).pipe(
+        .get(`${this.url}/${endPoint}`).pipe(
           map((data: any) => this.convertData(data.items))
         );
     }
