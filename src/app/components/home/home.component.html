@@ -1,8 +1,5 @@
-<p>
-  home works!
-</p>
-<div class="col-xs-3">
-  <h1>Skills</h1>
+<div class="col-xs-5" style="margin: 20px">
+  <h2>Skills</h2>
   <a class="list-group-item clearfix" *ngFor="let skill of skills">
     <div class="pull-left">
       <h4 class="list-group-item-heading">{{ skill.name }}</h4>
@@ -10,22 +7,22 @@
     </div>
   </a>
 </div>
-<div class="col-xs-3">
+<div class="col-xs-5" style="margin: 20px">
   <hr>
-  <h1>Levels</h1>
-  <a class="list-group-item clearfix" *ngFor="let level of levels">
+  <h2>Levels</h2>
+  <div class="list-group-item clearfix" *ngFor="let level of levels">
     <div class="pull-left">
       <h4 class="list-group-item-heading">{{ level.name }}</h4>
       <p class="list-group-item-text">id: {{ level.id }}</p>
       <p class="list-group-item-text">weight: {{ level.weight }}</p>
       <p class="list-group-item-text">skillId: {{ level.skillId }}</p>
     </div>
-  </a>
+  </div>
 </div>
-<div class="col-xs-3">
+<div class="col-xs-5" style="margin: 20px">
   <hr>
-  <h1>Certificates</h1>
-  <a class="list-group-item clearfix" *ngFor="let certificate of certificates">
+  <h2>Certificates</h2>
+  <a class="mat-action-row" *ngFor="let certificate of certificates">
     <div class="pull-left">
       <h4 class="list-group-item-heading">{{ certificate.name }}</h4>
       <p class="list-group-item-text">id: {{ certificate.id }}</p>
