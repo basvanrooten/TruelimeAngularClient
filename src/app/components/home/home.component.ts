@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SkillService } from '../../services/skill.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public skills: any;
+  public levels: any;
+  public certificates: any;
+
+  constructor(private skillService: SkillService) { }
 
   ngOnInit() {
+    this.skillService.list().subscribe(
+      result => {
+        console.log(result);
+        this.skills = result;
+        }
+    );
   }
 
 }
