@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand"routerLink="/home">ScoutActivityRepo</a>
+  <a class="navbar-brand"routerLink="/home">TrueLime</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
           aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,20 +11,20 @@
         <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/activities" routerLinkActive="active">Opkomsten</a>
+        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/components" routerLinkActive="active">Activiteit</a>
+        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profiel</a>
       </li>
 
     </ul>
 
     <ul class="navbar-nav">
       <li class="nav-item mr-3">
-        <span class="navbar-text">Welkom {{auth.getUserDetails()?.firstName}}</span>
+        <span class="navbar-text">Welkom Gebruiker</span>
       </li>
       <li class="nav-item form-inline">
-        <button class="btn btn-outline-secondary" (click)="logout()" >Uitloggen</button>
+        <button class="btn btn-outline-secondary">Uitloggen</button>
       </li>
     </ul>
   </div>
