@@ -1,7 +1,8 @@
 
 /*@import "scss/trueLime/all.css";*/
 /*@import "scss/trueLime/variables.scss";*/
-/*@import "~@progress/kendo-theme-bootstrap/scss/all.scss";*/
+/* @import "~@progress/kendo-theme-bootstrap/scss/all.scss"; */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 

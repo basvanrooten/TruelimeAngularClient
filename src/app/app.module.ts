@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,
+  MatCheckboxModule,  
   MatDialogModule,
   MatIconModule,
   MatInputModule,
