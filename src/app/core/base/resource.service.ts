@@ -46,6 +46,13 @@ export class ResourceService<T extends Resource> {
         );
     }
 
+    listSpecific(id: any): Observable<T[]> {
+      return this.httpClient
+        .get(`${this.url}/${this.endpoint}/${id}`, httpOptions)
+        .pipe(map((data: any) => this.convertData(data))
+        );
+    }
+
     delete(id: Number) {
       return this.httpClient
         .delete(`${this.url}/${this.endpoint}/${id}`, httpOptions);
