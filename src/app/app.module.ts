@@ -9,6 +9,10 @@ import { FormlyModule} from '@ngx-formly/core'
 import { FormlyMaterialModule} from '@ngx-formly/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProfileComponent } from './components/profile/profile.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { SkillService } from '../app/services/skill.service';
 
@@ -55,26 +59,14 @@ const appRoutes: Routes = [
     FormlyModule.forRoot(),
     FormlyMaterialModule,
     RouterModule.forRoot(appRoutes),
-
-    // Material components
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSlideToggleModule,
-    MatTabsModule,
-    MatToolbarModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
 
     // Flex-layout
     FlexLayoutModule
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, BsDropdownModule, TooltipModule, ModalModule],
   providers: [SkillService],
   bootstrap: [AppComponent]
 })

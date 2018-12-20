@@ -1,5 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/*@import "scss/trueLime/all.css";*/
+/*@import "scss/trueLime/variables.scss";*/
+/*@import "~@progress/kendo-theme-bootstrap/scss/all.scss";*/
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 body{
