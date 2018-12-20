@@ -1,3 +1,38 @@
-<p>
-  home works!
-</p>
+<div class="mat-dialog-container" style="margin: 40px; padding: 20px; width: 20%">
+  <h2>Skills</h2>
+  <div style="margin: 20px">
+    <a class="list-group-item clearfix" *ngFor="let skill of skills">
+      <h4 class="list-group-item-heading">{{ skill.name }}</h4>
+      <div style="margin-left: 20px" class="pull-left">
+        <p class="list-group-item-text">id: {{ skill.id }}</p>
+      </div>
+    </a>
+  </div>
+  </div>
+
+<div class="mat-dialog-container" style="margin: 40px; padding: 20px; width: 20%">
+  <h2>Levels</h2>
+  <div style="margin: 20px">
+    <div class="list-group-item clearfix" *ngFor="let level of levels">
+      <h4 class="list-group-item-heading">{{ level.name }}</h4>
+      <div style="margin-left: 20px" class="pull-left">
+        <p class="list-group-item-text">weight: {{ level.weight }}</p>
+        <p class="list-group-item-text">skillId: {{ level.skillId }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="mat-dialog-container" style="margin: 40px; padding: 20px; width: 20%">
+  <h2>Certificates</h2>
+  <div style="margin: 20px">
+    <a class="mat-action-row" *ngFor="let certificate of certificates">
+      <h4 class="list-group-item-heading">{{ certificate.name }}</h4>
+      <div style="margin-left: 20px" class="pull-left">
+        <p class="list-group-item-text">date: {{ certificate.date | date:'d-MM-y'}}</p>
+        <p class="list-group-item-text">validUntil: {{ certificate.validUntil | date:'d-MM-y' }}</p>
+      </div>
+    </a>
+  </div>
+
+</div>
