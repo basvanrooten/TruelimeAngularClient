@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ResourceService } from '../core/base/resource.service';
 import { Level } from '../models/level.model';
 import { HttpClient } from '@angular/common/http';
-import { LevelSerializer } from "./serializers/level.serializer";
-import { Router } from "@angular/router";
+import { LevelSerializer } from './serializers/level.serializer';
+import { Router } from '@angular/router';
 
 
 @Injectable({
