@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { SkillService } from '../app/services/skill.service';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -47,6 +49,21 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatToolbarModule,
+    
     FormlyModule.forRoot(),
     FormlyMaterialModule,
     BsDropdownModule.forRoot(),
@@ -58,7 +75,7 @@ import { AppRoutingModule } from './app-routing.module';
 
     AppRoutingModule
   ],
-  exports: [RouterModule, BsDropdownModule, TooltipModule, ModalModule],
+  exports: [BsDropdownModule, TooltipModule, ModalModule],
   providers: [SkillService],
   bootstrap: [AppComponent]
 })
