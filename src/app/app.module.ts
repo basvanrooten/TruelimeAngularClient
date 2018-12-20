@@ -30,13 +30,9 @@ import { MatButtonModule,
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent }
-];
+
 
 @NgModule({
   declarations: [
@@ -54,7 +50,10 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormlyModule.forRoot(),
     FormlyMaterialModule,
+<<<<<<< HEAD
+=======
     RouterModule.forRoot(appRoutes),
+>>>>>>> parent of eda38f3... Merge pull request #7 from basvanrooten/feature/profile-component
 
     // Material components
     MatButtonModule,
@@ -72,9 +71,14 @@ const appRoutes: Routes = [
     MatToolbarModule,
 
     // Flex-layout
-    FlexLayoutModule
+    FlexLayoutModule,
+
+    AppRoutingModule
   ],
+<<<<<<< HEAD
+=======
   exports: [RouterModule],
+>>>>>>> parent of eda38f3... Merge pull request #7 from basvanrooten/feature/profile-component
   providers: [SkillService],
   bootstrap: [AppComponent]
 })
