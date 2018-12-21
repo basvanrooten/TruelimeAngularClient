@@ -28,6 +28,7 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@mdi/font": "^3.2.89",
     "@ngx-formly/core": "^4.8.2",
     "@ngx-formly/material": "^4.8.2",
     "@progress/kendo-theme-bootstrap": "^2.17.1",
