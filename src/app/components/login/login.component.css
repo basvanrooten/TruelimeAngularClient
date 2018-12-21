@@ -1,0 +1,19 @@
+.login_bg {
+  background: url("../../../assets/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#particles-js {
+  z-index: 1;
+}
+
+.login-card {
+  z-index: 100;
+}
+
+body,html {
+  height: 100%;
+}

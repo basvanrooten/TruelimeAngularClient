@@ -14,27 +14,27 @@ export class Account {
                   placeholder: "Email",
                   required: true,
                 },
-                validation:{
+                validation: {
                   messages: {
-                    required: 'You need to provide an email adress'
+                    required: 'You need to provide an email address'
                   }
                 }
               },
             {
                 key: 'password',
                 type: 'input',
-                templateOptions:{
+                templateOptions: {
                   type: 'password',
                   label: "Password",
                   placeholder: "Password",
                   required: true,
                 },
-                validation:{
+                validation: {
                   messages: {
                     required: 'You need to provide a password'
                   }
                 }
-              },         
+              },
         ];
     }
 }

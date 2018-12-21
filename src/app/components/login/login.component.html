@@ -1,9 +1,17 @@
-<div class="mat-dialog-container" style="margin: 40px; padding: 20px; width: 20%">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginModel)">
-    <formly-form [model]="loginModel" [fields]= "loginFields"
-    [form]="loginForm">
-    <button [disabled]="loginForm.invalid" type="submit"
-    mat-raised-button>Login</button>
-  </formly-form>
-  </form>
+<div class="login_bg">
+  <div id="particles-js"></div>
+  <div class="container-fluid h-100 login-card">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="card">
+        <div class="card-body">
+          <h5>Welcome! Please sign in!</h5>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginModel)">
+            <formly-form [model]="loginModel" [fields]="loginFields" [form]="loginForm">
+              <button [disabled]="loginForm.invalid" type="submit" mat-raised-button>Login</button>
+            </formly-form>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
