@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { UserSerializer } from './serializers/user.serializer';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ export class AuthService {
 
   private cookieValue: String = 'UNKNOWN';
   private cookieExpireDate: Date;
-  private userSerializer: UserSerializer;
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService, private router: Router) { }
 
@@ -48,10 +46,7 @@ export class AuthService {
     return cookieExists;
   }
 
-  public registerUser(item: User): Observable<any> {
-    return this.httpClient
-      .post<any>(`${environment.urlExpress}/register`, this.userSerializer.toJson(item)).pipe(
-        map(data => this.userSerializer.fromJson(data) as User)
-      );
+  public registerUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(`${environment.urlExpress}/register`, user);
   }
 }

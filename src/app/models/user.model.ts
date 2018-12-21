@@ -1,3 +1,5 @@
+import { FormlyFieldConfig } from '@ngx-formly/core';
+
 export class User {
     private _idUser?: String;
     private firstnameUser?: String;
@@ -61,5 +63,70 @@ export class User {
 
     set token(token: String) {
         this.tokenUser = token;
+    }
+
+    formFields() {
+        return <FormlyFieldConfig[]>[
+            {
+                key: 'firstname',
+                type: 'input',
+                templateOptions: {
+                  type: 'text',
+                  label: 'Firstname',
+                  placeholder: 'Firstname',
+                  required: true,
+                },
+                validation: {
+                    messages: {
+                        required: 'You need to provide an firstname'
+                    }
+                }
+            },
+            {
+                key: 'lastname',
+                type: 'input',
+                templateOptions: {
+                  type: 'text',
+                  label: 'Lastname',
+                  placeholder: 'Lastname',
+                  required: true,
+                },
+                validation: {
+                    messages: {
+                        required: 'You need to provide an lastname'
+                    }
+                }
+            },
+            {
+                key: 'email',
+                type: 'input',
+                templateOptions: {
+                  type: 'text',
+                  label: 'Email',
+                  placeholder: 'Email',
+                  required: true,
+                },
+                validation: {
+                    messages: {
+                        required: 'You need to provide an email adress'
+                    }
+                }
+            },
+            {
+                key: 'password',
+                type: 'input',
+                templateOptions: {
+                  type: 'password',
+                  label: 'Password',
+                  placeholder: 'Password',
+                  required: true,
+                },
+                validation: {
+                    messages: {
+                        required: 'You need to provide a password'
+                    }
+                }
+            },
+        ];
     }
 }
