@@ -7,6 +7,7 @@ import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { UserSerializer } from './serializers/user.serializer';
+import {$} from "protractor";
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,8 @@ export class AuthService {
 
   private cookieValue: String = 'UNKNOWN';
   private cookieExpireDate: Date;
-  private userSerializer: UserSerializer;
 
-  constructor(private httpClient: HttpClient, private cookieService: CookieService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private cookieService: CookieService, private router: Router, private userSerializer: UserSerializer) { }
 
   private setCookie(token: string) {
     this.cookieExpireDate = new Date();
@@ -49,9 +49,11 @@ export class AuthService {
   }
 
   public registerUser(item: User): Observable<any> {
+    console.log()
     return this.httpClient
       .post<any>(`${environment.urlExpress}/register`, this.userSerializer.toJson(item)).pipe(
         map(data => this.userSerializer.fromJson(data) as User)
       );
   }
+
 }

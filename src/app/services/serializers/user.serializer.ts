@@ -8,7 +8,7 @@ export class UserSerializer {
     user.firstname = json.firstname;
     user.lastname = json.lastname;
     user.email = json.email;
-    user.passowrd = json.passowrd;
+    user.password = json.password;
     user.date = json.date;
     user.token = json.token;
 
@@ -21,7 +21,7 @@ export class UserSerializer {
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
-      passowrd: user.passowrd,
+      password: user.password,
       date: user.date,
       token: user.token
     };

@@ -43,7 +43,7 @@ export class User {
         return this.passwordUser;
     }
 
-    set passowrd(password: String) {
+    set password(password: String) {
         this.passwordUser = password;
     }
 

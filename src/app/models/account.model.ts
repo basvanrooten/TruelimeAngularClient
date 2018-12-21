@@ -1,7 +1,7 @@
 import { FormlyFieldConfig } from "@ngx-formly/core";
 
 export class Account {
-    username: string;
+    email: string;
     password: string;
 
     formFields(){
@@ -16,7 +16,7 @@ export class Account {
                 },
                 validation:{
                   messages: {
-                    required: 'You need to provide an email adress'
+                    required: 'You need to provide an email address'
                   }
                 }
               },
