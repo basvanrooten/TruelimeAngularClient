@@ -17,8 +17,7 @@ export class CertificateSerializer {
       name: certificate.name,
       date: certificate.date,
       validUntil: certificate.validUntil
-
-  };
+    };
   }
 
   fromJsonList(json: any, key: string): Certificate[] {
@@ -28,6 +27,6 @@ export class CertificateSerializer {
       certificates.push(this.fromJson(element));
     });
 
-    return certificates;
+      return certificates;
+    }
   }
-}

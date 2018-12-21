@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { LevelSerializer } from './serializers/level.serializer';
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root'
 })

@@ -5,10 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/base/header/header.component';
 import { HomeComponent } from '../app/components/home/home.component';
-import { FormlyModule} from '@ngx-formly/core'
-import { FormlyMaterialModule} from '@ngx-formly/material'
+import { FormlyModule} from '@ngx-formly/core';
+import { FormlyMaterialModule} from '@ngx-formly/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CookieService } from 'ngx-cookie-service';
 
 import { SkillService } from '../app/services/skill.service';
 
@@ -75,7 +76,7 @@ const appRoutes: Routes = [
     FlexLayoutModule
   ],
   exports: [RouterModule],
-  providers: [SkillService],
+  providers: [CookieService, SkillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
