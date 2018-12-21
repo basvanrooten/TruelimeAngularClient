@@ -11,8 +11,13 @@ import { CertificateService } from "../../services/certificate.service";
 export class HomeComponent implements OnInit {
 
   public skills: any;
+  public levelsFromSkill: any;
   public levels: any;
   public certificates: any;
+
+  public skill: any;
+  public level: any;
+  public certificate: any;
 
   constructor(private skillService: SkillService,
               private levelService: LevelService,
@@ -39,4 +44,26 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  onSelectedSkill(skill){
+    console.log(skill);
+    this.skill = skill;
+
+    this.levelService.listSpecific('Skill/' + this.skill.id).subscribe(
+      result => {
+        console.log(result);
+        this.levelsFromSkill = result;
+      }
+    );
+
+  }
+
+  onSelectedLevel(level){
+    console.log(level);
+    this.level = level;
+  }
+
+  onSelectedCertificate(certificate){
+    console.log(certificate);
+    this.certificate = certificate;
+  }
 }
