@@ -4,9 +4,40 @@
 /*@import "~@progress/kendo-theme-bootstrap/scss/all.scss";*/
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css"
+@import "https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css";
 
 body{
     margin: 0;
     padding: 0;
+}
+
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+ul.timeline:before {
+  content: ' ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+ul.timeline > li:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #22c0e8;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
 }
