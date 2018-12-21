@@ -1,3 +1,94 @@
-<p>
-  profile works!
-</p>
+<div class="container-fluid">
+  <div class="bg">
+    <div class="row">
+      <div class="container">
+        <div class="card">
+          <div class="card-body m-5">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-3">
+                    <img src="https://via.placeholder.com/512" class="img-fluid rounded-circle">
+                  </div>
+                  <div class="col-9">
+                    <h1>Bas van Rooten</h1>
+                    <p>bjc.vanrooten@student.avans.nl</p>
+                    <button type="button" class="btn btn-primary">Edit profile</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 border-left align-self-center">
+                <ul class="list-unstyled">
+                  <li>Availability: None</li>
+                  <li>Address: None</li>
+                  <li>Telephone: None</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="container">
+      <div class="card bg-light">
+        <div class="card-header">Overview</div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-9">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="about">
+                      <h5>About</h5>
+                      <p>Lorem ipsum set dolor amet</p>
+                    </div>
+                    <hr>
+                    <div class="expertise">
+                      <h5>Expertise</h5>
+                      <p>Lorem ipsum set dolor amet</p>
+                    </div>
+                    <hr>
+                    <div class="skills">
+                      <h5>Skills</h5>
+                      <div class="skills-badges">
+                        <span *ngFor="let skill of skills;" class="badge badge-pill badge-secondary m-1">{{skill.name}}</span>
+                        <p *ngIf="skills == undefined">This user doesn't have skills yet.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Recent Activity</h5>
+                    <ul class="timeline">
+                      <li>
+                        <p><i><small>6 months ago</small></i></p>
+                        <h5>Hans van der Linden</h5>
+                        <p>Added new skill</p>
+                      </li>
+                      <li>
+                        <p><i><small>6 months ago</small></i></p>
+                        <h5>Hans van der Linden</h5>
+                        <p>Removed skill from user</p>
+                      </li>
+                      <li>
+                        <p><i><small>7 months ago</small></i></p>
+                        <h5>Hans van der Linden</h5>
+                        <p>Updated skill</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
