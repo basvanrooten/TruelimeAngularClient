@@ -31,12 +31,15 @@ import { MatButtonModule,
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     HomeComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,7 @@ const appRoutes: Routes = [
     FlexLayoutModule
   ],
   exports: [RouterModule],
-  providers: [CookieService, SkillService],
+  providers: [CookieService, SkillService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

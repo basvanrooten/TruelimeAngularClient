@@ -18,11 +18,11 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService, private router: Router) { }
 
-  private setCookie(token: string) {
+  private setCookie(token: String) {
     this.cookieExpireDate = new Date();
     this.cookieExpireDate.setDate(this.cookieExpireDate.getDate() + 7);
 
-    this.cookieService.set('token', token, this.cookieExpireDate);
+    this.cookieService.set('token', token.toString(), this.cookieExpireDate);
   }
 
   public getCookie() {
@@ -47,6 +47,25 @@ export class AuthService {
   }
 
   public registerUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(`${environment.urlExpress}/register`, user);
+    return this.httpClient.post<User>(`${environment.urlExpessTest}/register`, user).pipe(
+      map((userRes: any) => {
+        if (userRes.token) {
+          this.setCookie(userRes.token);
+        }
+        return userRes;
+      })
+    );
+  }
+
+  public getUserDetails(): User {
+    const token = this.getCookie();
+    let payload;
+    if (token) {
+      payload = token.split('.')[1];
+      payload = window.atob(payload);
+      return JSON.parse(payload);
+    } else {
+      return null;
+    }
   }
 }

@@ -1,99 +1,99 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export class User {
-    private _idUser?: String;
-    private firstnameUser?: String;
-    private lastnameUser?: String;
-    private emailUser: String;
-    private passwordUser: String;
-    private dateUser?: String;
-    private tokenUser?: String;
+    private _id?: String;
+    private firstName?: String;
+    private lastName?: String;
+    private email: String;
+    private password: String;
+    private date?: String;
+    private token?: String;
 
-    get _id(): String {
-        return this._idUser;
+    get getId(): String {
+        return this._id;
     }
 
-    set _id(_id: String) {
-        this._idUser = _id;
+    set setId(Id: String) {
+        this._id = Id;
     }
 
-    get firstname(): String {
-        return this.firstnameUser;
+    get getFirstName(): String {
+        return this.firstName;
     }
 
-    set firstname(firstname: String) {
-        this.firstnameUser = firstname;
+    set setFirstName(firstName: String) {
+        this.firstName = firstName;
     }
 
-    get lastname(): String {
-        return this.lastnameUser;
+    get getLastName(): String {
+        return this.lastName;
     }
 
-    set lastname(lastname: String) {
-        this.lastnameUser = lastname;
+    set setLastName(lastname: String) {
+        this.lastName = lastname;
     }
 
-    get email(): String {
-        return this.emailUser;
+    get getEmail(): String {
+        return this.email;
     }
 
-    set email(email: String) {
-        this.emailUser = email;
+    set setEmail(email: String) {
+        this.email = email;
     }
 
-    get password(): String {
-        return this.passwordUser;
+    get getPassword(): String {
+        return this.password;
     }
 
-    set passowrd(password: String) {
-        this.passwordUser = password;
+    set setPassword(password: String) {
+        this.password = password;
     }
 
-    get date(): String {
-        return this.dateUser;
+    get getDate(): String {
+        return this.date;
     }
 
-    set date(date: String) {
-        this.dateUser = date;
+    set setDate(date: String) {
+        this.date = date;
     }
 
-    get token(): String {
-        return this.tokenUser;
+    get getToken(): String {
+        return this.token;
     }
 
-    set token(token: String) {
-        this.tokenUser = token;
+    set setToken(token: String) {
+        this.token = token;
     }
 
     formFields() {
         return <FormlyFieldConfig[]>[
             {
-                key: 'firstname',
+                key: 'firstName',
                 type: 'input',
                 templateOptions: {
                   type: 'text',
-                  label: 'Firstname',
-                  placeholder: 'Firstname',
+                  label: 'First name',
+                  placeholder: 'First name',
                   required: true,
                 },
                 validation: {
                     messages: {
-                        required: 'You need to provide an firstname'
+                        required: 'You need to provide an first name'
                     }
                 }
             },
             {
-                key: 'lastname',
+                key: 'lastName',
                 type: 'input',
                 templateOptions: {
                   type: 'text',
-                  label: 'Lastname',
-                  placeholder: 'Lastname',
+                  label: 'Last name',
+                  placeholder: 'Last name',
                   required: true,
                 },
                 validation: {
                     messages: {
-                        required: 'You need to provide an lastname'
+                        required: 'You need to provide an last name'
                     }
                 }
             },

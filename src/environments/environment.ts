@@ -5,6 +5,7 @@
 export const environment = {
   urlASP: 'https://truelimecertserviceapi.azurewebsites.net',
   urlExpress: 'https://truelimenode.herokuapp.com/api',
+  urlExpessTest: 'http://localhost:3000/api',
   production: false
 };
 
