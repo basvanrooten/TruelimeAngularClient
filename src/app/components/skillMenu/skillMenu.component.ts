@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { DeckService } from '../../services/deck.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-// import { CardService } from '../../services/card.service'
+import { SkillService } from '../../services/skill.service';
 
 @Component({
   selector: 'app-skillMenu',
@@ -14,7 +13,7 @@ export class SkillMenuComponent implements OnInit {
   skilllist: any
   skillCollection: any
   skillInput: any 
-  constructor( private router: Router) { }
+  constructor(private skillService: SkillService, private router: Router) { }
 
   ngOnInit() {
     this.skillCollection = []
@@ -22,6 +21,7 @@ export class SkillMenuComponent implements OnInit {
     this.skillInput = ["Java", "Python", "Backend developer", "Frontend developer", "C#", "Stackoverflow expert" ]
 
     this.skillCollection = this.filterList(this.skillInput, this.skilllist)
+
     
     // this.skilllist = this.deckservice.getCurrentDeck().deckList
 
