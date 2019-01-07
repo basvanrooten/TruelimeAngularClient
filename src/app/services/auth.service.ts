@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   public getCookie() {
-    if (!this.cookieService) {
+    if (this.cookieService) {
       this.cookieValue = this.cookieService.get('token');
     }
 
@@ -55,6 +55,26 @@ export class AuthService {
         return userRes;
       })
     );
+  }
+
+  public loginUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(`${environment.urlExpessTest}/login`, user).pipe(
+      map((userRes: any) => {
+        if (userRes.token) {
+          this.setCookie(userRes.token);
+        }
+        return userRes;
+      })
+    );
+  }
+
+  public isLoggedIn(): boolean {
+    const user = this.getUserDetails();
+    if (user) {
+      return user.exp > Date.now() / 1000;
+    } else {
+      return false;
+    }
   }
 
   public getUserDetails(): User {
