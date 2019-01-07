@@ -13,12 +13,16 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class SkillMenuComponent implements OnInit {
   skilllist: any
   skillCollection: any
+  skillInput: any 
   constructor( private router: Router) { }
 
   ngOnInit() {
+    this.skillCollection = []
+    this.skilllist = ["Python", "Backend developer", "Stackoverflow expert"]
+    this.skillInput = ["Java", "Python", "Backend developer", "Frontend developer", "C#", "Stackoverflow expert" ]
 
-    this.skilllist = ["Java", "Python", "Backend developer"]
-    this.skillCollection = ["Frontend developer", "C#", "Stackoverflow expert"]
+    this.skillCollection = this.filterList(this.skillInput, this.skilllist)
+    
     // this.skilllist = this.deckservice.getCurrentDeck().deckList
 
     // this.cardservice.getCards().subscribe(response=>{
@@ -79,5 +83,14 @@ export class SkillMenuComponent implements OnInit {
       console.log("In skillList: ")
       console.log(this.skilllist)
     }
+  }
+  filterList(listToFilter, filterList){
+    var filteredlist = []
+    for(let skill of listToFilter){
+      if(!filterList.includes(skill)){
+        filteredlist.push(skill)
+      }
+    }
+    return filteredlist
   }
 }
