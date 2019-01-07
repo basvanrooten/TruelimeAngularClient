@@ -10,17 +10,17 @@ import { SkillService } from '../../services/skill.service';
   styleUrls: ['./skillMenu.component.css']
 })
 export class SkillMenuComponent implements OnInit {
-  skilllist: any
+  userSkillList: any
   skillCollection: any
   skillInput: any 
   constructor(private skillService: SkillService, private router: Router) { }
 
   ngOnInit() {
     this.skillCollection = []
-    this.skilllist = ["Python", "Backend developer", "Stackoverflow expert"]
+    this.userSkillList = ["Python", "Backend developer", "Stackoverflow expert"]
     this.skillInput = ["Java", "Python", "Backend developer", "Frontend developer", "C#", "Stackoverflow expert" ]
 
-    this.skillCollection = this.filterList(this.skillInput, this.skilllist)
+    this.skillCollection = this.filterList(this.skillInput, this.userSkillList)
 
     
     // this.skilllist = this.deckservice.getCurrentDeck().deckList
@@ -81,7 +81,7 @@ export class SkillMenuComponent implements OnInit {
                         console.log("SkillCollection: ")
       console.log(this.skillCollection)
       console.log("In skillList: ")
-      console.log(this.skilllist)
+      console.log(this.userSkillList)
     }
   }
   filterList(listToFilter, filterList){
