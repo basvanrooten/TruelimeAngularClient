@@ -32,7 +32,8 @@ import { MatButtonModule,
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { SkillMenuComponent } from './components/skill-menu/skill-menu.component';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AppRoutingModule } from './app-routing.module';
     HeaderComponent,
     HomeComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    SkillMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-
+    DragDropModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
