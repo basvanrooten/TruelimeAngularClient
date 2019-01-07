@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { DeckService } from '../../services/deck.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-// import { CardService } from '../../services/card.service'
+import { SkillService } from '../../services/skill.service';
 
 @Component({
   selector: 'app-skillMenu',
@@ -13,12 +12,17 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class SkillMenuComponent implements OnInit {
   skilllist: any
   skillCollection: any
-  constructor( private router: Router) { }
+  skillInput: any 
+  constructor(private skillService: SkillService, private router: Router) { }
 
   ngOnInit() {
+    this.skillCollection = []
+    this.skilllist = ["Python", "Backend developer", "Stackoverflow expert"]
+    this.skillInput = ["Java", "Python", "Backend developer", "Frontend developer", "C#", "Stackoverflow expert" ]
 
-    this.skilllist = ["Java", "Python", "Backend developer"]
-    this.skillCollection = ["Frontend developer", "C#", "Stackoverflow expert"]
+    this.skillCollection = this.filterList(this.skillInput, this.skilllist)
+
+    
     // this.skilllist = this.deckservice.getCurrentDeck().deckList
 
     // this.cardservice.getCards().subscribe(response=>{
@@ -79,5 +83,14 @@ export class SkillMenuComponent implements OnInit {
       console.log("In skillList: ")
       console.log(this.skilllist)
     }
+  }
+  filterList(listToFilter, filterList){
+    var filteredlist = []
+    for(let skill of listToFilter){
+      if(!filterList.includes(skill)){
+        filteredlist.push(skill)
+      }
+    }
+    return filteredlist
   }
 }
