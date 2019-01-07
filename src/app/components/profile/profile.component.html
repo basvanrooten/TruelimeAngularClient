@@ -13,7 +13,7 @@
                   <div class="col-9">
                     <h1>Bas van Rooten</h1>
                     <p>bjc.vanrooten@student.avans.nl</p>
-                    <button type="button" class="btn btn-primary">Edit profile</button>
+                    <button type="button" class="btn btn-primary" (click)="editToggle()">Edit profile</button>
                   </div>
                 </div>
               </div>
@@ -52,9 +52,15 @@
                     <hr>
                     <div class="skills">
                       <h5>Skills</h5>
-                      <div class="skills-badges">
-                        <span *ngFor="let skill of skills;" class="badge badge-pill badge-secondary m-1">{{skill.name}}</span>
-                        <p *ngIf="skills == undefined">This user doesn't have skills yet.</p>
+                      <div *ngIf="this.editMode === false">
+                        <div class="skills-badges">
+                          <span *ngFor="let skill of skills;" class="badge badge-pill badge-secondary m-1">{{skill.name}}</span>
+                          <p *ngIf="skills == undefined">This user doesn't have skills yet.</p>
+                        </div>
+                      </div>
+
+                      <div *ngIf="this.editMode === true">
+                        <app-skillMenu></app-skillMenu>
                       </div>
                     </div>
                   </div>
@@ -91,4 +97,3 @@
     </div>
   </div>
 </div>
-

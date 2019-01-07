@@ -8,6 +8,7 @@ import { SkillService } from '../../services/skill.service';
 })
 export class ProfileComponent implements OnInit {
 
+  public editMode: boolean = false;
   public skills: any;
 
   constructor(private skillService: SkillService) { }
@@ -19,6 +20,19 @@ export class ProfileComponent implements OnInit {
         this.skills = result;
       }
     );
+  }
+
+
+  editToggle() {
+    if (this.editMode) {
+      this.editMode = false;
+      console.log("Edit mode disabled");
+    } else if (!this.editMode) {
+      this.editMode = true;
+      console.log("Edit mode enabled");
+    } else {
+      console.error("Invalid edit state..")
+    }
   }
 
 }
