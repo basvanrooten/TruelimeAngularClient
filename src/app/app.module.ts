@@ -32,7 +32,7 @@ import { MatButtonModule,
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SkillMenuComponent } from './components/skill-menu/skill-menu.component';
+import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { DragDropModule } from '@angular/cdk/drag-drop'
 
 

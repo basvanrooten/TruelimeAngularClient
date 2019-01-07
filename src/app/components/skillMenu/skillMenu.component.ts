@@ -6,9 +6,9 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 // import { CardService } from '../../services/card.service'
 
 @Component({
-  selector: 'app-skill-menu',
-  templateUrl: './skill-menu.component.html',
-  styleUrls: ['./skill-menu.component.css']
+  selector: 'app-skillMenu',
+  templateUrl: './skillMenu.component.html',
+  styleUrls: ['./skillMenu.component.css']
 })
 export class SkillMenuComponent implements OnInit {
   skilllist: any
