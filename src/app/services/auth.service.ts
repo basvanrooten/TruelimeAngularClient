@@ -77,7 +77,7 @@ export class AuthService {
     }
   }
 
-  public getUserDetails(): any {
+  public getUserDetails(): User {
     const token = this.getCookie();
     let payload;
     if (token) {
