@@ -25,7 +25,7 @@ export abstract class ResourceService<T extends Resource> {
         );
     }
 
-  public createWithParameter(userId: String, item: T): Observable<T> {
+  public createWithParameter(userId: String, item: any): Observable<T> {
     return this.httpClient
       .post<T>(`${this.url}/${this.endpoint}/`+ userId, this.serializer.toJson(item), httpOptions).pipe(
         map(data => this.serializer.fromJson(data) as T)

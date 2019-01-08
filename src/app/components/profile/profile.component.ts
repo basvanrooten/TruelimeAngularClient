@@ -49,9 +49,9 @@ export class ProfileComponent implements OnInit {
       console.error("Invalid edit state..")
     }
   }
-  // POST certain Skill (from ASP.NET) and attach it to User (Node)
-  postSkillToUser(skill: Skill) {
-    this.userSkillService.createWithParameter(this.authService.getUserDetails()._id, skill);
-  }
+// POST certain Skill (from ASP.NET) and attach it to User (Node)
+postSkillToUser(skill: Skill) {
+  this.userSkillService.createWithParameter(this.authService.getUserDetails()._id, skill);
+}
 
 }
