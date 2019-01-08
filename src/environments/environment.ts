@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  url: 'https://truelimecertserviceapi.azurewebsites.net',
+  urlASP: 'https://truelimecertserviceapi.azurewebsites.net',
+  urlExpress: 'https://truelimenode.herokuapp.com/api',
+  urlExpessTest: 'http://localhost:3000/api',
   production: false
 };
 

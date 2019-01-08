@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   public registerUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(`${environment.urlExpessTest}/register`, user).pipe(
+    return this.httpClient.post<User>(`${environment.urlExpress}/register`, user).pipe(
       map((userRes: any) => {
         if (userRes.token) {
           this.setCookie(userRes.token);
@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   public loginUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(`${environment.urlExpessTest}/login`, user).pipe(
+    return this.httpClient.post<User>(`${environment.urlExpress}/login`, user).pipe(
       map((userRes: any) => {
         if (userRes.token) {
           this.setCookie(userRes.token);
