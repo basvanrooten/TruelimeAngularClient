@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SkillService } from '../../services/skill.service';
 import { LevelService } from "../../services/level.service";
 import { CertificateService } from "../../services/certificate.service";
+import {AssessmentService} from '../../services/assessment.service';
+import {QuizQuestionService} from '../../services/quizquestion.service';
+import {QuizAnswerService} from '../../services/quizanswer.service';
+import {forEach} from '@angular/router/src/utils/collection';
+import {Assessment} from '../../models/assessment.model';
+import {QuizQuestion} from '../../models/quizquestion.model';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +20,19 @@ export class HomeComponent implements OnInit {
   public levelsFromSkill: any;
   public levels: any;
   public certificates: any;
+  public assessments: Assessment[];
 
   public skill: any;
   public level: any;
   public certificate: any;
+  public assessment: any;
 
   constructor(private skillService: SkillService,
               private levelService: LevelService,
-              private certificateService: CertificateService) { }
+              private certificateService: CertificateService,
+              private assessmentService: AssessmentService,
+              private quizQuestionService: QuizQuestionService,
+              private quizAnswerService: QuizAnswerService) { }
 
   ngOnInit() {
     this.skillService.list().subscribe(
@@ -42,6 +53,41 @@ export class HomeComponent implements OnInit {
         this.certificates = result;
       }
     );
+    this.assessmentService.list().subscribe(
+      result => {
+        this.assessments = result;
+        this.assessments.forEach((a) => {
+          this.quizQuestionService.list().subscribe(
+            result => {
+              a.questions = [];
+              let questionCounter = result.length;
+              result.forEach((b) => {
+                if(b.assessmentId == a.id){
+                  a.questions.push(b);
+                }
+                questionCounter -= 1;
+                if (questionCounter === 0){
+                  a.questions.forEach((c) => {
+                    this.quizAnswerService.list().subscribe(
+                      result => {
+                        c.answers = [];
+                        result.forEach((d) => {
+                          if(c.id == d.quizQuestionId){
+
+                            c.answers.push(d);
+                          }
+                        })
+                      }
+                    )
+                  })
+                }
+              });
+            }
+          )
+        });
+        console.log(this.assessments);
+      }
+    );
   }
 
   onSelectedSkill(skill){
@@ -54,7 +100,6 @@ export class HomeComponent implements OnInit {
         this.levelsFromSkill = result;
       }
     );
-
   }
 
   onSelectedLevel(level){
