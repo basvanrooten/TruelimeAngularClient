@@ -59,10 +59,10 @@ export class HomeComponent implements OnInit {
         this.assessments.forEach((a) => {
           this.quizQuestionService.list().subscribe(
             result => {
+              a.questions = [];
               let questionCounter = result.length;
               result.forEach((b) => {
                 if(b.assessmentId == a.id){
-                  a.questions = [];
                   a.questions.push(b);
                 }
                 questionCounter -= 1;
@@ -70,9 +70,10 @@ export class HomeComponent implements OnInit {
                   a.questions.forEach((c) => {
                     this.quizAnswerService.list().subscribe(
                       result => {
+                        c.answers = [];
                         result.forEach((d) => {
                           if(c.id == d.quizQuestionId){
-                            c.answers = [];
+
                             c.answers.push(d);
                           }
                         })
