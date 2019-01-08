@@ -8,6 +8,7 @@ import { FormlyModule} from '@ngx-formly/core'
 import { FormlyMaterialModule} from '@ngx-formly/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CookieService } from 'ngx-cookie-service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { SkillService } from './services/skill.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
