@@ -15,7 +15,6 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'skillmenu', component: SkillMenuComponent, canActivate: [AuthGuardService] },
   { path: 'assessment', component: AssessmentQuizComponent, canActivate: [AuthGuardService] }
-
 ];
 
 @NgModule({
