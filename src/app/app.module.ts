@@ -35,7 +35,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
-import { DragDropModule } from '@angular/cdk/drag-drop'
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component'
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     HomeComponent,
     ProfileComponent,
     LoginComponent,
-    SkillMenuComponent
+    SkillMenuComponent,
+    AssessmentQuizComponent
   ],
   imports: [
     BrowserModule,
