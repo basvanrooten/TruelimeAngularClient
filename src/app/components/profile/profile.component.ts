@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SkillService } from '../../services/skill.service';
+import {UserSkillService} from '../../services/user-skill.service';
+import {AuthService} from '../../services/auth.service';
+import {SkillService} from '../../services/skill.service';
+import {Skill} from '../../models/skill.model';
 
 @Component({
   selector: 'app-profile',
@@ -9,19 +12,31 @@ import { SkillService } from '../../services/skill.service';
 export class ProfileComponent implements OnInit {
 
   public editMode: boolean = false;
-  public skills: any;
+  // All available Skills (ASP.NET)
+  public allSkills: any;
+  // All Skills attached to User (Node)
+  public userSkills: any;
 
-  constructor(private skillService: SkillService) { }
+  constructor(private userSkillService: UserSkillService,
+              private skillService: SkillService,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    // All available Skills (ASP.NET)
     this.skillService.list().subscribe(
       result => {
         console.log(result);
-        this.skills = result;
+        this.allSkills = result;
+      }
+    );
+    // All Skills attached to logged in User (Node)
+    this.userSkillService.listSpecific(this.authService.getUserDetails()._id).subscribe(
+      result => {
+        console.log(result);
+        this.userSkills = result;
       }
     );
   }
-
 
   editToggle() {
     if (this.editMode) {
@@ -33,6 +48,10 @@ export class ProfileComponent implements OnInit {
     } else {
       console.error("Invalid edit state..")
     }
+  }
+  // POST certain Skill (from ASP.NET) and attach it to User (Node)
+  postSkillToUser(skill: Skill) {
+    this.userSkillService.createWithParameter(this.authService.getUserDetails()._id, skill);
   }
 
 }
