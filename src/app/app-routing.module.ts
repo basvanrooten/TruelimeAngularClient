@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from '../app/components/home/home.component';
 import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
+import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 
 
 const appRoutes: Routes = [
@@ -13,7 +14,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'skillmenu', component: SkillMenuComponent },
-  { path: 'assessment', component: AssessmentQuizComponent }
+  { path: 'assessment', component: AssessmentQuizComponent },
+  { path: 'assessments', component: AssessmentListComponent }
 
 ];
 
