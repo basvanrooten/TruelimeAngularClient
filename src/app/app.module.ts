@@ -14,11 +14,12 @@ import { SkillService } from './services/skill.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,  
+  MatCheckboxModule,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
@@ -70,7 +71,6 @@ import { AssessmentListComponent } from './components/assessment-list/assessment
     MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule,
-    
     FormlyModule.forRoot(),
     FormlyMaterialModule,
     BsDropdownModule.forRoot(),
@@ -83,7 +83,7 @@ import { AssessmentListComponent } from './components/assessment-list/assessment
     AppRoutingModule
   ],
   exports: [BsDropdownModule, TooltipModule, ModalModule],
-  providers: [SkillService],
+  providers: [CookieService, SkillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
