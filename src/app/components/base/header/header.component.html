@@ -7,29 +7,32 @@
   <div id="navbarNavDropdown" class="navbar-collapse collapse">
 
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
-      </li>
-      <li class="nav-item">
+      <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
+      </li>
+      <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profiel</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/skillmenu" routerLinkActive="active">Skills aanpassen</a>
       </li>
     </ul>
 
     <ul class="navbar-nav">
-      <li class="nav-item mr-3">
+      <li *ngIf="authService.isLoggedIn()" class="nav-item mr-3">
         <span class="navbar-text">Welkom Gebruiker</span>
       </li>
-      <li class="nav-item form-inline">
-        <button class="btn btn-outline-secondary">Uitloggen</button>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item form-inline">
+        <button (click)="authService.deleteCookie()" class="btn btn-outline-secondary">Uitloggen</button>
       </li>
     </ul>
   </div>
