@@ -8,9 +8,12 @@
         <table class="table">
           <tbody>
             <tr *ngFor="let assessment of assessments; let i = index">
-              <td>{{assessment.name}}</td>
+              <td>{{assessment?.name}}</td>
               <td>Laatste score: <strong>TODO</strong></td>
-              <td><a class="btn btn-primary" href="#" role="button">Start Test</a></td>
+              <td><a class="btn btn-primary" routerLink="/assessment/{{assessment?.id}}" role="button">Start Test</a></td>
+            </tr>
+            <tr *ngIf="assessments == null">
+              <td>No assessments available</td>
             </tr>
           </tbody>
         </table>
