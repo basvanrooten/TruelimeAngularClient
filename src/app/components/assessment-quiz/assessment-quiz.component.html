@@ -13,7 +13,7 @@
             <p>{{ quizQuestion.question }}</p>
           </div>
           <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action" *ngFor="let answer of quizQuestion.answers">
+            <a class="list-group-item list-group-item-action" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
               {{ answer.answer }}
             </a>
           </div>
@@ -26,7 +26,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-auto mr-auto">Total questions: {{ assessment?.questions?.length }}</div>
-            <div class="col-auto"><button type="submit" class="btn btn-primary">Finish Test</button></div>
+            <div class="col-auto"><button type="submit" class="btn btn-primary"  [disabled]="!assessment?.questions?.length == filledInQuestions.length -1" (click)="postScoreToUser(assessment, filledInQuestions)">Finish Test</button></div>
           </div>
         </div>
       </div>
