@@ -8,16 +8,18 @@ import { FormlyModule} from '@ngx-formly/core'
 import { FormlyMaterialModule} from '@ngx-formly/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CookieService } from 'ngx-cookie-service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { SkillService } from './services/skill.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,  
+  MatCheckboxModule,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
@@ -33,7 +35,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
-import { DragDropModule } from '@angular/cdk/drag-drop'
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
+import { AssessmentListComponent } from './components/assessment-list/assessment-list.component'
 
 
 @NgModule({
@@ -43,7 +47,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     HomeComponent,
     ProfileComponent,
     LoginComponent,
-    SkillMenuComponent
+    SkillMenuComponent,
+    AssessmentQuizComponent,
+    AssessmentListComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule,
-    
     FormlyModule.forRoot(),
     FormlyMaterialModule,
     BsDropdownModule.forRoot(),
@@ -78,7 +83,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     AppRoutingModule
   ],
   exports: [BsDropdownModule, TooltipModule, ModalModule],
-  providers: [SkillService],
+  providers: [CookieService, SkillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

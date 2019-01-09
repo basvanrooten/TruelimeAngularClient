@@ -4,17 +4,20 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from '../app/components/home/home.component';
 import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
+import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
+import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'skillmenu', component: SkillMenuComponent }
-
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'skillmenu', component: SkillMenuComponent, canActivate: [AuthGuardService] },
+  { path: 'assessment', component: AssessmentQuizComponent, canActivate: [AuthGuardService] },
+  { path: 'assessments', component: AssessmentListComponent, canActivate: [AuthGuardService] }
 ];
-
 
 @NgModule({
   imports: [ RouterModule.forRoot(appRoutes) ],

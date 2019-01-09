@@ -33,7 +33,7 @@
   <div class="row mt-5">
     <div class="container">
       <div class="card bg-light">
-        <div class="card-header">Overview</div>
+        <div class="card-header">Overview <span *ngIf="this.editMode === true" class="badge badge-pill badge-info float-right">Edit mode</span></div>
         <div class="card-body">
           <div class="container">
             <div class="row">
@@ -42,12 +42,14 @@
                   <div class="card-body">
                     <div class="about">
                       <h5>About</h5>
-                      <p>Lorem ipsum set dolor amet</p>
+                      <p *ngIf="this.editMode === false">Lorem ipsum set dolor amet</p>
+                      <textarea *ngIf="this.editMode === true" class="form-control" placeholder="Lorem ipsum set dolor amet"></textarea>
                     </div>
                     <hr>
                     <div class="expertise">
                       <h5>Expertise</h5>
-                      <p>Lorem ipsum set dolor amet</p>
+                      <p *ngIf="this.editMode === false">Lorem ipsum set dolor amet</p>
+                      <textarea *ngIf="this.editMode === true" class="form-control" placeholder="Lorem ipsum set dolor amet"></textarea>
                     </div>
                     <hr>
                     <div class="skills">
@@ -60,7 +62,7 @@
                       </div>
 
                       <div *ngIf="this.editMode === true">
-                        <app-skillMenu></app-skillMenu>
+                        <app-skillMenu>Loading available skills</app-skillMenu>
                       </div>
                     </div>
                   </div>

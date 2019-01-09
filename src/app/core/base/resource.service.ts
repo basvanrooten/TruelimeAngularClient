@@ -11,12 +11,12 @@ const httpOptions = {
     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJuYmYiOjE1NDUxNjY4OTIsImV4cCI6MTU3NjcwMjg5Mn0.U5R0nElNH-1pqNtpFAK_YB40J2bymHYIlYzp-kVQpC4'
 })};
 
-export class ResourceService<T extends Resource> {
+export abstract class ResourceService<T extends Resource> {
   constructor(
-      private httpClient: HttpClient,
-      private url: String,
-      private endpoint: String,
-      private serializer: Serializer) {}
+      protected httpClient: HttpClient,
+      protected url: String,
+      protected endpoint: String,
+      protected serializer: Serializer) {}
 
     public create(item: T): Observable<T> {
       return this.httpClient
@@ -24,6 +24,13 @@ export class ResourceService<T extends Resource> {
           map(data => this.serializer.fromJson(data) as T)
         );
     }
+
+  public createWithParameter(userId: String, item: any): Observable<T> {
+    return this.httpClient
+      .post<T>(`${this.url}/${this.endpoint}/`+ userId, this.serializer.toJson(item), httpOptions).pipe(
+        map(data => this.serializer.fromJson(data) as T)
+      );
+  }
 
     public update(item: T, id: Number): Observable<T> {
       return this.httpClient

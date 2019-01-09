@@ -2,7 +2,7 @@
   <div class="col">
     <div class="example-container">
         <h6>Unacquired Skills</h6>
-        <div cdkDropList #collectionlist="cdkDropList" [cdkDropListData]="skillCollection" [cdkDropListConnectedTo]="[userSkillList]"
+        <div cdkDropList #collectionlist="cdkDropList" [cdkDropListData]="skillCollection" [cdkDropListConnectedTo]="[skillListUser]"
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let s of skillCollection" cdkDrag>{{s}}</div>
       </div>
@@ -11,9 +11,9 @@
   <div class="col">
     <div class="example-container">
       <h6>Current Skills</h6> <!-- Username? -->
-      <div cdkDropList #userSkillList="cdkDropList" [cdkDropListData]="skilllist" [cdkDropListConnectedTo]="[collectionlist]"
+      <div cdkDropList #skillListUser="cdkDropList" [cdkDropListData]="userSkillList" [cdkDropListConnectedTo]="[collectionlist]"
         class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let s of skilllist" cdkDrag>{{s}}</div>
+        <div class="example-box" *ngFor="let s of userSkillList" cdkDrag>{{s}}</div>
       </div>
     </div>  
   </div>
