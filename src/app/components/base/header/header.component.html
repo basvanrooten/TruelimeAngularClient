@@ -13,6 +13,9 @@
       <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
       </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
+      </li>
       <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
       </li>

@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'skillmenu', component: SkillMenuComponent, canActivate: [AuthGuardService] },
-  { path: 'assessment', component: AssessmentQuizComponent, canActivate: [AuthGuardService] },
+  { path: 'assessment/:id', component: AssessmentQuizComponent, canActivate: [AuthGuardService] },
   { path: 'assessments', component: AssessmentListComponent, canActivate: [AuthGuardService] }
 ];
 
