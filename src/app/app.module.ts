@@ -33,12 +33,12 @@ import { MatButtonModule,
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
-import { AssessmentListComponent } from './components/assessment-list/assessment-list.component'
-
+import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import { AssessmentListComponent } from './components/assessment-list/assessment
     LoginComponent,
     SkillMenuComponent,
     AssessmentQuizComponent,
-    AssessmentListComponent
+    AssessmentListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
