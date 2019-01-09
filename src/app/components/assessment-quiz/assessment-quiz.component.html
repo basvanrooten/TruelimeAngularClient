@@ -5,8 +5,7 @@
       <h3> {{ assessment?.name }}</h3>
     </div>
 
-    <div class="mt-5">
-      <a class="list-group-item clearfix" *ngFor="let quizQuestion of assessment?.questions">
+    <div class="mt-5" *ngFor="let quizQuestion of assessment?.questions">
         <div class="card">
           <div class="card-body">
             <!--<h5 class="card-title">Vraag </h5>-->
@@ -18,7 +17,6 @@
             </a>
           </div>
         </div>
-      </a>
   </div>
 
     <div class="mt-5">
