@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Assessment} from '../../models/assessment.model';
 
 @Component({
   selector: 'app-assessment-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assessment-list.component.css']
 })
 export class AssessmentListComponent implements OnInit {
+  public assessment: Assessment;
+  public assessments: Assessment[];
 
   constructor() { }
 
