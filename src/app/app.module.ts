@@ -14,11 +14,12 @@ import { SkillService } from './services/skill.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,  
+  MatCheckboxModule,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
@@ -35,7 +36,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component'
+import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
+import { AssessmentListComponent } from './components/assessment-list/assessment-list.component'
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { AssessmentQuizComponent } from './components/assessment-quiz/assessment
     ProfileComponent,
     LoginComponent,
     SkillMenuComponent,
-    AssessmentQuizComponent
+    AssessmentQuizComponent,
+    AssessmentListComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,6 @@ import { AssessmentQuizComponent } from './components/assessment-quiz/assessment
     MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule,
-    
     FormlyModule.forRoot(),
     FormlyMaterialModule,
     BsDropdownModule.forRoot(),
@@ -81,7 +83,7 @@ import { AssessmentQuizComponent } from './components/assessment-quiz/assessment
     AppRoutingModule
   ],
   exports: [BsDropdownModule, TooltipModule, ModalModule],
-  providers: [SkillService],
+  providers: [CookieService, SkillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
