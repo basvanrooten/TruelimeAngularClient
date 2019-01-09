@@ -7,30 +7,13 @@
         </div>
         <table class="table">
           <tbody>
-            <tr>
-              <td>Java Master Quiz Part 1</td>
-              <td>Laatste score: 8.1</td>
-              <td><button type="button" class="btn btn-sm btn-primary">Start Test</button></td>
+            <tr *ngFor="let assessment of assessments; let i = index">
+              <td>{{assessment?.name}}</td>
+              <td>Laatste score: <strong>TODO</strong></td>
+              <td><a class="btn btn-primary" routerLink="/assessment/{{assessment?.id}}" role="button">Start Test</a></td>
             </tr>
-            <tr>
-              <td>Java Master Quiz Part 1</td>
-              <td>Laatste score: 8.1</td>
-              <td><button type="button" class="btn btn-sm btn-primary">Start Test</button></td>
-            </tr>
-            <tr>
-              <td>Java Master Quiz Part 1</td>
-              <td>Laatste score: 8.1</td>
-              <td><button type="button" class="btn btn-sm btn-primary">Start Test</button></td>
-            </tr>
-            <tr>
-              <td>Java Master Quiz Part 1</td>
-              <td>Laatste score: 8.1</td>
-              <td><button type="button" class="btn btn-sm btn-primary">Start Test</button></td>
-            </tr>
-            <tr>
-              <td>Java Master Quiz Part 1</td>
-              <td>Laatste score: 8.1</td>
-              <td><button type="button" class="btn btn-sm btn-primary">Start Test</button></td>
+            <tr *ngIf="assessments == null">
+              <td>No assessments available</td>
             </tr>
           </tbody>
         </table>
