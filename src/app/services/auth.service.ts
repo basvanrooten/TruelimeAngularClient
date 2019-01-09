@@ -56,6 +56,7 @@ export class AuthService {
       })
     );
   }
+
   public loginUser(user: User): Observable<User> {
     return this.httpClient.post<User>(`${environment.urlExpress}/login`, user).pipe(
       map((userRes: any) => {
@@ -66,6 +67,7 @@ export class AuthService {
       })
     );
   }
+
   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
     if (user) {
@@ -74,6 +76,16 @@ export class AuthService {
       return false;
     }
   }
+
+  public isNotLoggedIn(): boolean {
+    const user = this.getUserDetails();
+    if (user) {
+      return user.exp < Date.now() / 1000;
+    } else {
+      return true;
+    }
+  }
+
   public getUserDetails(): User {
     const token = this.getCookie();
     let payload;
