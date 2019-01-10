@@ -38,6 +38,7 @@ import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
+import { AssessmentFinishComponent } from './components/assessment-finish/assessment-finish.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AssessmentListComponent } from './components/assessment-list/assessment
     SkillMenuComponent,
     AssessmentQuizComponent,
     AssessmentListComponent,
-    RegisterComponent
+    RegisterComponent,
+    AssessmentFinishComponent
   ],
   imports: [
     BrowserModule,

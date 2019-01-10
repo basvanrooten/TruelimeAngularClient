@@ -7,6 +7,7 @@ import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AssessmentFinishComponent } from './components/assessment-finish/assessment-finish.component';
 
 
 const appRoutes: Routes = [
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'skillmenu', component: SkillMenuComponent, canActivate: [AuthGuardService] },
   { path: 'assessment/:id', component: AssessmentQuizComponent, canActivate: [AuthGuardService] },
+  { path: 'assessment/:id/finish', component: AssessmentFinishComponent, canActivate: [AuthGuardService]},
   { path: 'assessments', component: AssessmentListComponent, canActivate: [AuthGuardService] }
 ];
 
