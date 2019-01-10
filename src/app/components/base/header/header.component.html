@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand"routerLink="/home">TrueLime</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
           aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,20 +6,17 @@
   <div id="navbarNavDropdown" class="navbar-collapse collapse">
 
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-      </li>
       <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-      </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
       </li>
       <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profiel</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/skillmenu" routerLinkActive="active">Skills aanpassen</a>

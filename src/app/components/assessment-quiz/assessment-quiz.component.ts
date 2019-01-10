@@ -5,11 +5,10 @@ import { AuthService } from '../../services/auth.service';
 import { AssessmentService } from '../../services/assessment.service';
 import { QuizQuestionService } from '../../services/quizquestion.service';
 import { QuizAnswerService } from '../../services/quizanswer.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {QuizAnswer} from '../../models/quizanswer.model';
-import {QuizQuestion} from '../../models/quizquestion.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuizAnswer } from '../../models/quizanswer.model';
+import { QuizQuestion } from '../../models/quizquestion.model';
 
-// @ts-ignore
 @Component({
   selector: 'app-assessment-quiz',
   templateUrl: './assessment-quiz.component.html',
