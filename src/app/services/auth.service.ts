@@ -35,7 +35,7 @@ export class AuthService {
 
   public deleteCookie() {
     this.cookieService.delete('token');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/login');
 
     return this.cookieValue = 'UNKNOWN';
   }
