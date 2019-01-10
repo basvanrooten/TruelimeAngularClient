@@ -6,19 +6,20 @@
     </div>
 
     <div class="mt-5">
-      <a class="list-group-item clearfix" *ngFor="let quizQuestion of assessment?.questions">
-        <div class="card">
+      <div class="list-group-item clearfix" *ngFor="let quizQuestion of assessment?.questions">
+          <div class="card">
           <div class="card-body">
-            <!--<h5 class="card-title">Vraag </h5>-->
             <p>{{ quizQuestion.question }}</p>
           </div>
           <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
-              {{ answer.answer }}
+            <a class="list-group-item list-group-item-action" [ngStyle]="{'background-color': this.isCurrentAnswer(quizQuestion, answer) ? 'lightblue' : ''}" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
+              <div >
+                {{ answer.answer }}
+              </div>
             </a>
           </div>
         </div>
-      </a>
+      </div>
   </div>
 
     <div class="mt-5">

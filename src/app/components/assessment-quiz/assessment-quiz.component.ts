@@ -8,7 +8,6 @@ import { QuizAnswerService } from '../../services/quizanswer.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuizAnswer} from '../../models/quizanswer.model';
 import {QuizQuestion} from '../../models/quizquestion.model';
-import {forEach} from '@angular/router/src/utils/collection';
 
 // @ts-ignore
 @Component({
@@ -72,35 +71,57 @@ export class AssessmentQuizComponent implements OnInit {
   }
   // Give an answer to a question and save it to array
   fillInQuestion(question: QuizQuestion, answer: QuizAnswer) {
-    if(this.filledInQuestions.find(q => q.QuizQuestion == question.id)) {
-      // this.filledInQuestions.put({
-      //   "QuizQuestion": question.id,
-      //   "QuizAnswer": answer.id
-      // });
-      return;
+
+    let json = {
+      question: question.id,
+      answer: answer.id
+    };
+
+    if(!this.filledInQuestions.find(obj => obj.question === question.id)) {
+      this.filledInQuestions.push(json);
     } else {
-      if(answer.isCorrect){
-        this.filledInQuestions.push({
-          "QuizQuestion": question.id
-        });
-        this.score = this.score + 1;
-      } else {
-        this.filledInQuestions.push({
-          "QuizQuestion": question.id
-        });
+      let obj = this.filledInQuestions.find(obj => obj.question === question.id);
+      if(obj.answer !== answer.id) {
+        obj.answer = answer.id;
       }
     }
     console.log(this.filledInQuestions);
   }
 
+  isCurrentAnswer(question: QuizQuestion, answer: QuizAnswer) {
+      if(this.filledInQuestions.find(obj => obj.question == question.id)) {
+        return this.filledInQuestions.find(obj => obj.question == question.id).answer == answer.id;
+      }
+      return false;
+  }
+
+  calculateScore() {
+    this.filledInQuestions.forEach(element => {
+        this.assessment.questions.forEach(question => {
+            if(element.question == question.id) {
+                question.answers.forEach(answer => {
+                    if(element.answer == answer.id) {
+                        if(answer.isCorrect) {
+                            this.score++;
+                        }
+                    }
+                });
+            }
+        });
+      });
+    let totalPoints = this.assessment.questions.length;
+    let percentage = (this.score / totalPoints) * 100;
+    return percentage;
+  }
+
   // POST given answers to Node backend
   postScoreToUser(assessment: Assessment, filledInQuestions: any) {
-    let totalPoints = assessment.questions.length;
-    let percentage = (this.score / assessment.questions.length) * 100;
+    let percentage = this.calculateScore();
     let body = {
-      "Score": percentage,
-      "assessmentId": assessment.id
+      score: percentage,
+      assessmentId: assessment.id
     };
+    console.log(body);
     console.log('Correct answers: ' + this.score);
     console.log('Percentage: ' + percentage + '%');
     this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
