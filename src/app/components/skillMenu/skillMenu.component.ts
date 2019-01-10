@@ -26,7 +26,11 @@ export class SkillMenuComponent implements OnInit {
     this.userSkillService.list().subscribe(
       result => {
         console.log(result);
-        this.userSkillList = result;
+        if(!result === undefined) {
+          this.userSkillList = result;
+        } else {
+          this.userSkillList = ["No Skills found"];
+        }
       }
     )
     this.skillCollection = this.filterList(this.skillInput, this.userSkillList)
