@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   public appName = 'TrueLime';
   public userDetails: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
     this.authService.getUserInformation().subscribe(
