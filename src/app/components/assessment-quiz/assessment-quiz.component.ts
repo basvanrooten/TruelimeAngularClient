@@ -111,6 +111,7 @@ export class AssessmentQuizComponent implements OnInit {
             }
         });
       });
+
     let totalPoints = this.assessment.questions.length;
     this.percentage = (this.score / totalPoints) * 100;
   }
@@ -133,5 +134,9 @@ export class AssessmentQuizComponent implements OnInit {
       console.error(err);
     });
 
+  }
+
+  returnToProfile(){
+    this.router.navigateByUrl('/profile');
   }
 }

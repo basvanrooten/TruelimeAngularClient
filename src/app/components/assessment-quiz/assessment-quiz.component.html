@@ -41,11 +41,18 @@
     <div class="container">
     <div class="mt-5">
       <h3>Assessment complete</h3>
+      <br>
     </div>
     <div class="card">
       <div class="card-body">
         <div class="row">
-          <div class="col-auto mr-auto">Your score: {{ percentage }}%</div>
+          <div class="col-auto mr-auto">Your score: <h1>{{ percentage }}%</h1></div>
+        </div>
+        <div class="row">
+          <img [src]="imageToDisplay" alt="" class="img-rounded img-responsive">
+        </div>
+        <div>
+          <button class="btn btn-default" style="margin-right: 20px; float: right" (click)="returnToProfile()">Return to profile</button>
         </div>
       </div>
     </div>
