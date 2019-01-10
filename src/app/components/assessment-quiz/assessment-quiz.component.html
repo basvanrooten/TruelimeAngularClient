@@ -1,4 +1,6 @@
 <div class="container-fluid">
+
+  <div *ngIf="!testTaken">
   <div class="container">
 
     <div class="mt-5">
@@ -33,4 +35,22 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <div *ngIf="testTaken">
+    <div class="container">
+    <div class="mt-5">
+      <h3>Assessment complete</h3>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-auto mr-auto">Your score: {{ percentage }}%</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
 </div>
