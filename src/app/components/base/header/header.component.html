@@ -29,7 +29,7 @@
 
     <ul class="navbar-nav">
       <li *ngIf="authService.isLoggedIn()" class="nav-item mr-3">
-        <span class="navbar-text">Welkom Gebruiker</span>
+        <span class="navbar-text">Welkom, {{ userDetails.firstName }} {{ userDetails.lastName }}</span>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item form-inline">
         <button (click)="authService.deleteCookie()" class="btn btn-outline-secondary">Uitloggen</button>

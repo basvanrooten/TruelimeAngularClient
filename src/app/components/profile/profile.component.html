@@ -11,8 +11,8 @@
                     <img src="https://via.placeholder.com/512" class="img-fluid rounded-circle">
                   </div>
                   <div class="col-9">
-                    <h1>Bas van Rooten</h1>
-                    <p>bjc.vanrooten@student.avans.nl</p>
+                    <h1>{{ userDetails.firstName }} {{ userDetails.lastName }}</h1>
+                    <p>{{ userDetails.email }}</p>
                     <button type="button" class="btn btn-primary" (click)="editToggle()">Edit profile</button>
                   </div>
                 </div>

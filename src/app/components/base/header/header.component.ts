@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,16 @@ export class HeaderComponent implements OnInit {
   @Output() featureSelected = new EventEmitter<string>();
 
   public appName = 'TrueLime';
+  public userDetails: User;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.getUserInformation().subscribe(
+      result => {
+        this.userDetails = result;
+      }
+    );
   }
 
 }
