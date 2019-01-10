@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { SkillService } from '../../services/skill.service';
-
+import { UserSkillService } from '../../services/user-skill.service';
 @Component({
   selector: 'app-skillMenu',
   templateUrl: './skillMenu.component.html',
@@ -13,13 +13,22 @@ export class SkillMenuComponent implements OnInit {
   userSkillList: any
   skillCollection: any
   skillInput: any 
-  constructor(private skillService: SkillService, private router: Router) { }
+  constructor(private skillService: SkillService, private userSkillService: UserSkillService, private router: Router) { }
 
   ngOnInit() {
     this.skillCollection = []
-    this.userSkillList = ["Python", "Backend developer", "Stackoverflow expert"]
-    this.skillInput = ["Java", "Python", "Backend developer", "Frontend developer", "C#", "Stackoverflow expert" ]
-
+    this.skillService.list().subscribe(
+      result => {
+        console.log(result);
+        this.skillInput = result;
+        }
+    );
+    this.userSkillService.list().subscribe(
+      result => {
+        console.log(result);
+        this.userSkillList = result;
+      }
+    )
     this.skillCollection = this.filterList(this.skillInput, this.userSkillList)
 
     
