@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Assessment } from '../../models/assessment.model';
 import {AssessmentService} from '../../services/assessment.service';
-import { Assessment } from 'src/app/models/assessment.model';
 import { QuizQuestionService } from 'src/app/services/quizquestion.service';
 import { QuizAnswerService } from 'src/app/services/quizanswer.service';
 
@@ -10,9 +10,9 @@ import { QuizAnswerService } from 'src/app/services/quizanswer.service';
   styleUrls: ['./assessment-list.component.css']
 })
 export class AssessmentListComponent implements OnInit {
-
+  public assessment: Assessment;
   public assessments: Assessment[];
-  
+
   constructor(private assessmentService: AssessmentService, 
     private quizQuestionService: QuizQuestionService,
     private quizAnswerService: QuizAnswerService) { }
