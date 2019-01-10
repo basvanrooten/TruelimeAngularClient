@@ -117,7 +117,7 @@ export class AssessmentQuizComponent implements OnInit {
   }
 
   // POST given answers to Node backend
-  postScoreToUser(assessment: Assessment, filledInQuestions: any) {
+  postScoreToUser(assessment: Assessment) {
     this.calculateScore();
     let body = {
       score: this.percentage,
@@ -128,7 +128,6 @@ export class AssessmentQuizComponent implements OnInit {
     console.log('Percentage: ' + this.percentage + '%');
     this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
       .subscribe(() => {
-      // this.router.navigateByUrl('/profile');
         this.testTaken = true;
     }, (err) => {
       console.error(err);
