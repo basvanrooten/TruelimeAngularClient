@@ -7,9 +7,10 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css";
 
-body{
-    margin: 0;
-    padding: 0;
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 ul.timeline {
