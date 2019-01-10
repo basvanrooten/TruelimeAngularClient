@@ -16,9 +16,11 @@ import {QuizQuestion} from '../../models/quizquestion.model';
   styleUrls: ['./assessment-quiz.component.css']
 })
 export class AssessmentQuizComponent implements OnInit {
+  testTaken = false;
   id: Number;
   sub: any;
   public score = 0;
+  public percentage = 0;
   public assessment: Assessment;
   public filledInQuestions: any = [];
 
@@ -110,23 +112,23 @@ export class AssessmentQuizComponent implements OnInit {
         });
       });
     let totalPoints = this.assessment.questions.length;
-    let percentage = (this.score / totalPoints) * 100;
-    return percentage;
+    this.percentage = (this.score / totalPoints) * 100;
   }
 
   // POST given answers to Node backend
   postScoreToUser(assessment: Assessment, filledInQuestions: any) {
-    let percentage = this.calculateScore();
+    this.calculateScore();
     let body = {
-      score: percentage,
+      score: this.percentage,
       assessmentId: assessment.id
     };
     console.log(body);
     console.log('Correct answers: ' + this.score);
-    console.log('Percentage: ' + percentage + '%');
+    console.log('Percentage: ' + this.percentage + '%');
     this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
       .subscribe(() => {
-      this.router.navigateByUrl('/profile');
+      // this.router.navigateByUrl('/profile');
+        this.testTaken = true;
     }, (err) => {
       console.error(err);
     });
