@@ -1,7 +1,11 @@
-<div class="mat-dialog-container" style="margin: 40px; padding: 20px; width: 20%">
+<div class="mat-dialog-container" style="margin: 40px; padding-right: 80px; padding-left: 80px; padding-top: 20px; padding-bottom: 20px">
+  <br>
+  <br>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginModel)">
     <formly-form [model]="loginModel" [fields]= "loginFields"
     [form]="loginForm">
+      <br>
+      <br>
     <button [disabled]="loginForm.invalid" type="submit"
     mat-raised-button>Login</button>
   </formly-form>
