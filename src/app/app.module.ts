@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/base/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { FormlyModule} from '@ngx-formly/core'
 import { FormlyMaterialModule} from '@ngx-formly/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,7 +44,6 @@ import { AssessmentFinishComponent } from './components/assessment-finish/assess
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
     ProfileComponent,
     LoginComponent,
     SkillMenuComponent,
