@@ -70,6 +70,7 @@ export class SkillMenuComponent implements OnInit {
     //   }
     // })
   }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -78,12 +79,13 @@ export class SkillMenuComponent implements OnInit {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
-                        console.log("SkillCollection: ")
-      console.log(this.skillCollection)
-      console.log("In skillList: ")
-      console.log(this.userSkillList)
+                        console.log("SkillCollection: ");
+      console.log(this.skillCollection);
+      console.log("In skillList: ");
+      console.log(this.userSkillList);
     }
   }
+
   filterList(listToFilter, filterList){
     var filteredlist = []
     for(let skill of listToFilter){

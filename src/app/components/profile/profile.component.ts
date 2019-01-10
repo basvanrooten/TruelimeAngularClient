@@ -11,7 +11,7 @@ import {Skill} from '../../models/skill.model';
 })
 export class ProfileComponent implements OnInit {
 
-  public editMode: boolean = false;
+  public editMode: Boolean = false;
   // All available Skills (ASP.NET)
   public allSkills: any;
   // All Skills attached to User (Node)
@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
       }
     );
     // All Skills attached to logged in User (Node)
-    this.userSkillService.listSpecific(this.authService.getUserDetails()._id).subscribe(
+    this.userSkillService.list().subscribe(
       result => {
         console.log(result);
         this.userSkills = result;

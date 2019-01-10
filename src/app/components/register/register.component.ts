@@ -21,6 +21,9 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/');
+    }
   }
 
   onSubmit(userRegister: User) {
