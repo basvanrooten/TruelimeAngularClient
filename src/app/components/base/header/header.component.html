@@ -13,22 +13,22 @@
         <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profiel</a>
+        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/skillmenu" routerLinkActive="active">Skills aanpassen</a>
+        <a class="nav-link" routerLink="/skillmenu" routerLinkActive="active">Add & Remove Skills</a>
       </li>
     </ul>
 
     <ul class="navbar-nav">
       <li *ngIf="authService.isLoggedIn()" class="nav-item mr-3">
-        <span class="navbar-text">Welkom, {{ userDetails.firstName }} {{ userDetails.lastName }}</span>
+        <span class="navbar-text">Welcome, {{ userDetails.firstName }} {{ userDetails.lastName }}</span>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item form-inline">
-        <button (click)="authService.deleteCookie()" class="btn btn-outline-secondary">Uitloggen</button>
+        <button (click)="authService.deleteCookie()" class="btn btn-outline-secondary">Log Out</button>
       </li>
     </ul>
   </div>
