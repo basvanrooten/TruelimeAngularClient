@@ -1,4 +1,6 @@
 <div class="container-fluid">
+
+  <div *ngIf="!testTaken">
   <div class="container">
 
     <div class="mt-5">
@@ -6,19 +8,20 @@
     </div>
 
     <div class="mt-5">
-      <a class="list-group-item clearfix" *ngFor="let quizQuestion of assessment?.questions">
-        <div class="card">
+      <div class="list-group-item clearfix" *ngFor="let quizQuestion of assessment?.questions">
+          <div class="card">
           <div class="card-body">
-            <!--<h5 class="card-title">Vraag </h5>-->
             <p>{{ quizQuestion.question }}</p>
           </div>
           <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
-              {{ answer.answer }}
+            <a class="list-group-item list-group-item-action" [ngStyle]="{'background-color': this.isCurrentAnswer(quizQuestion, answer) ? '#ff885b' : ''}" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
+              <div >
+                {{ answer.answer }}
+              </div>
             </a>
           </div>
         </div>
-      </a>
+      </div>
   </div>
 
     <div class="mt-5">
@@ -26,10 +29,57 @@
         <div class="card-body">
           <div class="row">
             <div class="col-auto mr-auto">Total questions: {{ assessment?.questions?.length }}</div>
-            <div class="col-auto"><button type="submit" class="btn btn-primary"  [disabled]="assessment?.questions?.length > filledInQuestions?.length" (click)="postScoreToUser(assessment, filledInQuestions)">Finish Test</button></div>
+            <div class="col-auto"><button type="submit" class="btn" style="background-color: orangered; color: white" [disabled]="assessment?.questions?.length > filledInQuestions?.length" (click)="postScoreToUser(assessment)">Finish Test</button></div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
+
+  <!--<div *ngIf="testTaken">-->
+    <!--<div class="container">-->
+    <!--<div class="mt-5">-->
+      <!--<h3>Assessment complete</h3>-->
+      <!--<br>-->
+    <!--</div>-->
+    <!--<div class="card">-->
+      <!--<div class="card-body">-->
+        <!--<div class="row">-->
+          <!--<div class="col-auto mr-auto">Your score: <h1>{{ percentage }}%</h1></div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+          <!--<img [src]="imageToDisplay" alt="" class="img-rounded img-responsive">-->
+        <!--</div>-->
+        <!--<div>-->
+          <!--<button class="btn btn-default" style="margin-right: 20px; float: right" (click)="returnToProfile()">Return to profile</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div *ngIf="testTaken" class="container-fluid">
+    <div class="container">
+      <div class="mt-5">
+        <div class="card  text-center">
+          <div class="card-body mt-5 mb-3">
+            <h1 class="card-title">Assessment completed</h1>
+            <p>You have successfully submitted the assessment.</p>
+            <p>Your score:</p>
+            <div class="progress align center-block" style="max-width: 24rem; margin-left: auto; margin-right:auto; height: 20px;">
+              <div class="progress-bar bg-success" role="progressbar" [style.width.%]="percentage"
+                   [attr.aria-valuenow]="percentage"
+                   aria-valuemin="0"
+                   aria-valuemax="100">{{ percentage }}%</div>
+              </div>
+            <a class="btn btn-lg mt-4" style="background-color: orangered; color: white" routerLink="/assessments" role="button">Continue</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>

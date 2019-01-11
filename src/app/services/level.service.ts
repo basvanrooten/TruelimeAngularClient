@@ -3,8 +3,6 @@ import { ResourceService } from '../core/base/resource.service';
 import { Level } from '../models/level.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LevelSerializer } from "./serializers/level.serializer";
-import { Router } from "@angular/router";
-
 
 @Injectable({
   providedIn: 'root'

@@ -5,21 +5,21 @@ import { AuthService } from '../../services/auth.service';
 import { AssessmentService } from '../../services/assessment.service';
 import { QuizQuestionService } from '../../services/quizquestion.service';
 import { QuizAnswerService } from '../../services/quizanswer.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {QuizAnswer} from '../../models/quizanswer.model';
-import {QuizQuestion} from '../../models/quizquestion.model';
-import {forEach} from '@angular/router/src/utils/collection';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuizAnswer } from '../../models/quizanswer.model';
+import { QuizQuestion } from '../../models/quizquestion.model';
 
-// @ts-ignore
 @Component({
   selector: 'app-assessment-quiz',
   templateUrl: './assessment-quiz.component.html',
   styleUrls: ['./assessment-quiz.component.css']
 })
 export class AssessmentQuizComponent implements OnInit {
+  testTaken = false;
   id: Number;
   sub: any;
   public score = 0;
+  public percentage = 0;
   public assessment: Assessment;
   public filledInQuestions: any = [];
 
@@ -64,51 +64,84 @@ export class AssessmentQuizComponent implements OnInit {
                   })
                 }
               });
+
             }
           );
         console.log(this.assessment);
+      }, error => {
+        console.log(error);
+        this.router.navigateByUrl('/assessments');
       }
     );
   }
   // Give an answer to a question and save it to array
   fillInQuestion(question: QuizQuestion, answer: QuizAnswer) {
-    if(this.filledInQuestions.find(q => q.QuizQuestion == question.id)) {
-      // this.filledInQuestions.put({
-      //   "QuizQuestion": question.id,
-      //   "QuizAnswer": answer.id
-      // });
-      return;
+
+    let json = {
+      question: question.id,
+      answer: answer.id
+    };
+
+    if(!this.filledInQuestions.find(obj => obj.question === question.id)) {
+      this.filledInQuestions.push(json);
     } else {
-      if(answer.isCorrect){
-        this.filledInQuestions.push({
-          "QuizQuestion": question.id
-        });
-        this.score = this.score + 1;
-      } else {
-        this.filledInQuestions.push({
-          "QuizQuestion": question.id
-        });
+      let obj = this.filledInQuestions.find(obj => obj.question === question.id);
+      if(obj.answer !== answer.id) {
+        obj.answer = answer.id;
       }
     }
     console.log(this.filledInQuestions);
   }
 
+  isCurrentAnswer(question: QuizQuestion, answer: QuizAnswer) {
+      if(this.filledInQuestions.find(obj => obj.question == question.id)) {
+        return this.filledInQuestions.find(obj => obj.question == question.id).answer == answer.id;
+      }
+      return false;
+  }
+
+  calculateScore() {
+    this.filledInQuestions.forEach(element => {
+        this.assessment.questions.forEach(question => {
+            if(element.question == question.id) {
+                question.answers.forEach(answer => {
+                    if(element.answer == answer.id) {
+                        if(answer.isCorrect) {
+                            this.score++;
+                        }
+                    }
+                });
+            }
+        });
+      });
+
+    let totalPoints = this.assessment.questions.length;
+    this.percentage = (this.score / totalPoints) * 100;
+  }
+
   // POST given answers to Node backend
-  postScoreToUser(assessment: Assessment, filledInQuestions: any) {
-    let totalPoints = assessment.questions.length;
-    let percentage = (this.score / assessment.questions.length) * 100;
+  postScoreToUser(assessment: Assessment) {
+    this.calculateScore();
     let body = {
-      "Score": percentage,
-      "assessmentId": assessment.id
+      score: this.percentage,
+      assessmentId: assessment.id
     };
+    console.log(body);
     console.log('Correct answers: ' + this.score);
-    console.log('Percentage: ' + percentage + '%');
+    console.log('Percentage: ' + this.percentage + '%');
     this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
       .subscribe(() => {
-      this.router.navigateByUrl('/profile');
+        // Disable first part of template (quiz) + enable second part (confirmation)
+        this.testTaken = true;
+        // Reset score back to 0 to prevent duplicates
+        this.score = 0;
     }, (err) => {
       console.error(err);
     });
 
+  }
+
+  returnToProfile(){
+    this.router.navigateByUrl('/profile');
   }
 }

@@ -15,10 +15,10 @@ export class AssessmentSerializer {
     return assessment;
   }
 
-  toJson(assessment: Assessment): any {
+  toJson(json: any): any {
     return {
-      id: assessment.id,
-      name: assessment.name
+      assessmentId: json.assessmentId,
+      score: json.score
     };
   }
 

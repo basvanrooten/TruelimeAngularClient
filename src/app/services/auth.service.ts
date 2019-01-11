@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -98,4 +99,16 @@ export class AuthService {
     }
   }
 
+  public getUserInformation(): Observable<User> {
+    const httpOptions = { headers:   new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': `${this.getCookie()}`
+    }) };
+
+    return this.httpClient.get<User>(`${environment.urlExpress}/users/${this.getUserDetails()._id}`, httpOptions).pipe(
+      map((userRes: any) => {
+        return userRes;
+      })
+    );
+  }
 }

@@ -7,9 +7,10 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css";
 
-body{
-    margin: 0;
-    padding: 0;
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-721584.jpg);
 }
 
 ul.timeline {
@@ -36,7 +37,7 @@ ul.timeline > li:before {
   display: inline-block;
   position: absolute;
   border-radius: 50%;
-  border: 3px solid #22c0e8;
+  border: 3px solid orangered;
   left: 20px;
   width: 20px;
   height: 20px;
