@@ -4,5 +4,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
