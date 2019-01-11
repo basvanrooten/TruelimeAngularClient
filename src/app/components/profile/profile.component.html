@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="bg">
     <div class="row">
-      <div class="container">
+      <div class="container" style="margin-top: 1px">
         <div class="card">
           <div class="card-body m-5">
             <div class="row">
               <div class="col-md-9">
                 <div class="row">
                   <div class="col-3">
-                    <img src="https://via.placeholder.com/512" class="img-fluid rounded-circle">
+                    <img src="https://cdn2.iconfinder.com/data/icons/business-persons-flat-1/512/person_4-512.png" class="img-fluid rounded-circle" style="background-color: slategrey">
                   </div>
                   <div class="col-9">
                     <h1>{{ userDetails.firstName }} {{ userDetails.lastName }}</h1>
@@ -30,10 +30,10 @@
       </div>
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="container">
-      <div class="card bg-light">
-        <div class="card-header">Overview <span *ngIf="this.editMode === true" class="badge badge-pill badge-info float-right">Edit mode</span></div>
+  <div class="row mt-5" >
+    <div class="container" >
+      <div class="card bg-light" >
+        <div class="card-header" style="background-color: slategrey; color: white">Overview <span *ngIf="this.editMode === true" class="badge badge-pill badge-info float-right">Edit mode</span></div>
         <div class="card-body">
           <div class="container">
             <div class="row">
