@@ -32,7 +32,7 @@ export class UserSkillService extends ResourceService<Skill> {
   // }
 
   public updateList(item: any): Observable<any> {
-    return this.httpClient .put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions).pipe(
+    return this.httpClient.put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions).pipe(
       map((result: any) => {
         return result;
       })
