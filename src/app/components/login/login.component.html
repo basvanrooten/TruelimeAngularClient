@@ -1,13 +1,15 @@
-<div class="mat-dialog-container" style="margin: 40px; padding-right: 80px; padding-left: 80px; padding-top: 20px; padding-bottom: 20px">
-  <br>
-  <br>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginModel)">
-    <formly-form [model]="loginModel" [fields]= "loginFields"
-    [form]="loginForm">
-      <br>
-      <br>
-    <button [disabled]="loginForm.invalid" type="submit"
-    mat-raised-button>Login</button>
-  </formly-form>
-  </form>
+<div class="container-fluid">
+  <div class="card mt-5 mb-5 mx-auto login-card">
+    <div class="card-body">
+      <h5 class="card-title">Welcome! Please log in</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Enter your valid credentials to continue</h6>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginModel)">
+        <formly-form [model]="loginModel" [fields]="loginFields" [form]="loginForm">
+          <br>
+          <br>
+          <button [disabled]="loginForm.invalid" type="submit" mat-raised-button>Login</button>
+        </formly-form>
+      </form>
+    </div>
+  </div>
 </div>
