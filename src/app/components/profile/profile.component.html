@@ -11,8 +11,8 @@
                     <img src="https://cdn2.iconfinder.com/data/icons/business-persons-flat-1/512/person_4-512.png" class="img-fluid rounded-circle" style="background-color: slategrey">
                   </div>
                   <div class="col-9">
-                    <h1>{{ userDetails.firstName }} {{ userDetails.lastName }}</h1>
-                    <p>{{ userDetails.email }}</p>
+                    <h1>{{ userDetails?.firstName }} {{ userDetails?.lastName }}</h1>
+                    <p>{{ userDetails?.email }}</p>
                     <button type="button" class="btn" style="background-color: orangered; color: white" (click)="editToggle()">Edit profile</button>
                   </div>
                 </div>
