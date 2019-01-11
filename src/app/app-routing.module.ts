@@ -8,6 +8,7 @@ import { AssessmentQuizComponent } from './components/assessment-quiz/assessment
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AssessmentFinishComponent } from './components/assessment-finish/assessment-finish.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 
 
 const appRoutes: Routes = [
@@ -16,9 +17,11 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'skillmenu', component: SkillMenuComponent, canActivate: [AuthGuardService] },
+  { path: 'assessment/', redirectTo: 'assessments', pathMatch: 'full', canActivate: [AuthGuardService] },
   { path: 'assessment/:id', component: AssessmentQuizComponent, canActivate: [AuthGuardService] },
   { path: 'assessment/:id/finish', component: AssessmentFinishComponent, canActivate: [AuthGuardService]},
-  { path: 'assessments', component: AssessmentListComponent, canActivate: [AuthGuardService] }
+  { path: 'assessments', component: AssessmentListComponent, canActivate: [AuthGuardService] },
+  { path: '**' ,component: PageNotFoundComponent }
 ];
 
 @NgModule({

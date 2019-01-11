@@ -39,6 +39,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 import { AssessmentFinishComponent } from './components/assessment-finish/assessment-finish.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AssessmentFinishComponent } from './components/assessment-finish/assess
     AssessmentQuizComponent,
     AssessmentListComponent,
     RegisterComponent,
-    AssessmentFinishComponent
+    AssessmentFinishComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

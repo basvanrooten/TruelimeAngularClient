@@ -64,9 +64,13 @@ export class AssessmentQuizComponent implements OnInit {
                   })
                 }
               });
+
             }
           );
         console.log(this.assessment);
+      }, error => {
+        console.log(error);
+        this.router.navigateByUrl('/assessments');
       }
     );
   }
