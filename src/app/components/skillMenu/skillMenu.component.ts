@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { SkillService } from '../../services/skill.service';
 import { UserSkillService } from '../../services/user-skill.service';
+import { forkJoin } from 'rxjs';
+import { Skill } from 'src/app/models/skill.model';
+
 @Component({
   selector: 'app-skillMenu',
   templateUrl: './skillMenu.component.html',
@@ -13,75 +14,41 @@ export class SkillMenuComponent implements OnInit {
   userSkillList: any
   skillCollection: any
   skillInput: any 
-  constructor(private skillService: SkillService, private userSkillService: UserSkillService, private router: Router) { }
+  constructor(private skillService: SkillService, private userSkillService: UserSkillService) { }
 
   ngOnInit() {
-    this.skillCollection = []
-    this.skillService.list().subscribe(
-      result => {
-        console.log(result);
-        this.skillInput = result;
-        }
-    );
-    this.userSkillService.list().subscribe(
-      result => {
-        console.log(result);
-        if(!result === undefined) {
-          this.userSkillList = result;
-        } else {
-          this.userSkillList = ["No Skills found"];
-        }
-      }
-    )
-    this.skillCollection = this.filterList(this.skillInput, this.userSkillList)
+    this.skillCollection = [];
+    this.skillInput = [];
+    this.userSkillList = [];
+    forkJoin(this.skillService.list(), this.userSkillService.list())
+    .subscribe(results => {
+        this.skillInput = results[0];
+        this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
+        this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
 
-    
-    // this.skilllist = this.deckservice.getCurrentDeck().deckList
-
-    // this.cardservice.getCards().subscribe(response=>{
-    //   this.skillCollection = response
-    //   console.log(this.skilllist)
-    // },
-    // (error: HttpErrorResponse)=>{
-    //   if(error.error instanceof Error){
-    //     console.log("Client side error");
-    //   }else{
-    //     console.log("Server side error")
-    //   }
-    // })
+    });
   }
+
+  private getFullSkills(skillList, userSkillList) {
+    let skills : Skill[] = [];
+    skillList.forEach(element => {
+      userSkillList.forEach(skill => {
+            if (element.id == skill.id) {
+                skills.push(element);
+            }
+        });
+    });
+    return skills;
+  };
 
   onSave(){
-    // let username = JSON.parse(localStorage.getItem("currentUser")).username;
+    let skillList = [];
 
-    // this.deckservice.putDeck(username, this.skillname, this.skilllist)
-    // .subscribe(response=>{
-    //   this.skilllist = response
-    //   this.onBack() 
-    // },
-    // (error: HttpErrorResponse)=>{
-    //   if(error.error instanceof Error){
-    //     console.log("Client side error");
-    //   }else{
-    //     console.log("Server side error")
-    //   }
-    // })
-  }
-  onDelete(){
-    // let username = JSON.parse(localStorage.getItem("currentUser")).username;
+    this.userSkillList.forEach(element => {
+        skillList.push(element.id);
+    });
 
-    // this.deckservice.deleteDeck(username, this.skillname)
-    // .subscribe(response=>{
-    //   console.log(response)
-    //   this.onBack() 
-    // },
-    // (error: HttpErrorResponse)=>{
-    //   if(error.error instanceof Error){
-    //     console.log("Client side error");
-    //   }else{
-    //     console.log("Server side error")
-    //   }
-    // })
+      this.userSkillService.updateList({skillList}).subscribe();
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -92,20 +59,17 @@ export class SkillMenuComponent implements OnInit {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
-                        console.log("SkillCollection: ");
-      console.log(this.skillCollection);
-      console.log("In skillList: ");
-      console.log(this.userSkillList);
     }
+    this.onSave();
   }
 
-  filterList(listToFilter, filterList){
-    var filteredlist = []
-    for(let skill of listToFilter){
-      if(!filterList.includes(skill)){
-        filteredlist.push(skill)
-      }
-    }
-    return filteredlist
+  filterList(listToFilter, userSkillList){
+
+    return listToFilter.filter(skill =>  
+      !userSkillList.reduce((acc, userSkill) => 
+          skill.id == userSkill.id || acc
+        ,false)
+    );
+
   }
 }
