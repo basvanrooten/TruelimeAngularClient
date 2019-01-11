@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginModel: User;
   loginFields: Array<FormlyFieldConfig>;
+  error: boolean = false;
+  errorMessage: string = '';
+
   constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({});
     this.loginModel = new User();
@@ -36,6 +39,8 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/profile');
     }, (err) => {
       console.error(err);
+      this.error = true;
+      this.errorMessage = err.error.message;
     });
   }
 }
