@@ -56,8 +56,8 @@
                       <h5>Skills</h5>
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
-                          <span *ngFor="let skill of skills;" class="badge badge-pill badge-secondary m-1">{{skill.name}}</span>
-                          <p *ngIf="skills == undefined">This user doesn't have skills yet.</p>
+                          <span *ngFor="let skill of profileUserSkills;" class="badge badge-pill badge-secondary m-1">{{skill}}</span>
+                          <p *ngIf="profileUserSkills == undefined">This user doesn't have skills yet.</p>
                         </div>
                       </div>
 
