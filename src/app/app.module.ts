@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/base/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { FormlyModule} from '@ngx-formly/core'
 import { FormlyMaterialModule} from '@ngx-formly/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,18 +38,19 @@ import { SkillMenuComponent } from './components/skillMenu/skillMenu.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AssessmentQuizComponent } from './components/assessment-quiz/assessment-quiz.component';
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
     ProfileComponent,
     LoginComponent,
     SkillMenuComponent,
     AssessmentQuizComponent,
     AssessmentListComponent,
-    RegisterComponent
+    RegisterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

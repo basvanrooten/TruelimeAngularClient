@@ -1,39 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand"routerLink="/home">TrueLime</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div id="navbarNavDropdown" class="navbar-collapse collapse">
+<div class="card" style="background-color: #8ec001; margin: -1px">
+  <nav class="navbar navbar-expand-lg navbar-light" >
+    <a class="navbar-brand"routerLink="/profile" style="color: white; font-weight: bold; margin-right: 20px">TrueLime</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
 
-    <ul class="navbar-nav mr-auto">
-      <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-      </li>
-      <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-      </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/assessments" routerLinkActive="active">Assessments</a>
-      </li>
-      <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
-      </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profiel</a>
-      </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/skillmenu" routerLinkActive="active">Skills aanpassen</a>
-      </li>
-    </ul>
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
+          <a class="nav-link" style="color: white;" routerLink="/login" routerLinkActive="active">Login</a>
+        </li>
+        <li *ngIf="authService.isNotLoggedIn()" class="nav-item">
+          <a class="nav-link" style="color: white;" routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn()" class="nav-item">
+          <a class="nav-link" style="color: white;" routerLink="/profile" routerLinkActive="active">Profile</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn()" class="nav-item">
+          <a class="nav-link" style="color: white;" routerLink="/assessments" routerLinkActive="active">Assessments</a>
+        </li>
+      </ul>
 
-    <ul class="navbar-nav">
-      <li *ngIf="authService.isLoggedIn()" class="nav-item mr-3">
-        <span class="navbar-text">Welkom Gebruiker</span>
-      </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item form-inline">
-        <button (click)="authService.deleteCookie()" class="btn btn-outline-secondary">Uitloggen</button>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <ul class="navbar-nav">
+        <li *ngIf="authService.isLoggedIn()" class="nav-item mr-3">
+          <span class="navbar-text" style="color: white;">Welcome, {{ userDetails.firstName }} {{ userDetails.lastName }}</span>
+        </li>
+        <li *ngIf="authService.isLoggedIn()" class="nav-item form-inline">
+          <button (click)="authService.deleteCookie()" class="btn btn-outline-light" >Log Out</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

@@ -1,4 +1,6 @@
-<div class="mat-dialog-container" style="margin: 40px; padding: 20px; width: 20%">
+<div class="mat-dialog-container" style="margin: 40px; padding-right: 80px; padding-left: 80px; padding-top: 20px; padding-bottom: 20px">
+  <br>
+  <br>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerModel)">
     <formly-form [model]="registerModel" [fields]= "registerFields"
     [form]="registerForm">
@@ -6,4 +8,6 @@
     mat-raised-button>Register</button>
   </formly-form>
   </form>
+  <br>
+  <br>
 </div>

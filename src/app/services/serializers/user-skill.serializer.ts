@@ -1,6 +1,11 @@
 import { Skill } from '../../models/skill.model';
+import { SkillService } from '../skill.service';
+import { resolve } from 'q';
 
-export class SkillSerializer {
+export class UserSkillSerializer {
+
+    constructor(private skillService: SkillService) {}
+
     fromJson(json: any): Skill {
         const skill = new Skill();
         skill.id = json.id;
@@ -17,14 +22,16 @@ export class SkillSerializer {
     }
 
     fromJsonList(json: any, key: string): Skill[] {
-        const skills: Skill[] = [];
 
-        console.log(skills);
+        let skills: Skill[] = [];
 
-        json[key].forEach((element: any) => {
-          skills.push(this.fromJson(element));
+        json.forEach(element => {
+            let skill = new Skill();
+            skill.id = element.skillId;
+            skills.push(skill);
         });
 
         return skills;
+
     }
 }

@@ -3,6 +3,7 @@ import {UserSkillService} from '../../services/user-skill.service';
 import {AuthService} from '../../services/auth.service';
 import {SkillService} from '../../services/skill.service';
 import {Skill} from '../../models/skill.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,8 @@ export class ProfileComponent implements OnInit {
   public allSkills: any;
   // All Skills attached to User (Node)
   public userSkills: any;
+
+  public userDetails: User;
 
   constructor(private userSkillService: UserSkillService,
               private skillService: SkillService,
@@ -34,6 +37,12 @@ export class ProfileComponent implements OnInit {
       result => {
         console.log(result);
         this.userSkills = result;
+      }
+    );
+
+    this.authService.getUserInformation().subscribe(
+      result => {
+        this.userDetails = result;
       }
     );
   }

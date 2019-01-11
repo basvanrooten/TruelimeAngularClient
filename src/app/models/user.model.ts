@@ -23,7 +23,7 @@ export class User {
                 },
                 validation: {
                     messages: {
-                        required: 'You need to provide an first name'
+                        required: 'You need to provide a first name'
                     }
                 }
             },
@@ -38,7 +38,7 @@ export class User {
                 },
                 validation: {
                     messages: {
-                        required: 'You need to provide an last name'
+                        required: 'You need to provide a last name'
                     }
                 }
             },
@@ -53,7 +53,7 @@ export class User {
                 },
                 validation: {
                     messages: {
-                        required: 'You need to provide an email adress'
+                        required: 'You need to provide an valid email address'
                     }
                 }
             },
@@ -88,7 +88,7 @@ export class User {
                 },
                 validation: {
                     messages: {
-                        required: 'You need to provide an email adress'
+                        required: 'You need to provide an email address'
                     }
                 }
             },
