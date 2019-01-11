@@ -3,7 +3,6 @@ import { ResourceService } from '../core/base/resource.service';
 import { Certificate } from '../models/certificate.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CertificateSerializer } from "./serializers/certificate.serializer";
-import { Router } from "@angular/router";
 
 
 @Injectable({

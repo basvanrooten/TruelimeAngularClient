@@ -127,7 +127,10 @@ export class AssessmentQuizComponent implements OnInit {
     console.log('Percentage: ' + this.percentage + '%');
     this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
       .subscribe(() => {
+        // Disable first part of template (quiz) + enable second part (confirmation)
         this.testTaken = true;
+        // Reset score back to 0 to prevent duplicates
+        this.score = 0;
     }, (err) => {
       console.error(err);
     });

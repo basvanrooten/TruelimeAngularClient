@@ -1,3 +1,12 @@
-<app-header (featureSelected)="onNavigate($event)"></app-header>
-<router-outlet></router-outlet>
 
+<div style="width: -moz-available;">
+  <div style="text-align: center">
+    <img src="../assets/truelime-logo1.png" style="width: 280px; height: 137px; margin-top: 40px; margin-bottom: 20px; ">
+  </div>
+
+</div>
+
+  <div class="card" style="margin-left: 80px; margin-right: 80px; padding-bottom: 40px; background-color: whitesmoke">
+    <app-header (featureSelected)="onNavigate($event)"></app-header>
+    <router-outlet></router-outlet>
+  </div>
