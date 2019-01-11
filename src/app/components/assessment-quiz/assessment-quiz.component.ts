@@ -67,9 +67,7 @@ export class AssessmentQuizComponent implements OnInit {
 
             }
           );
-        console.log(this.assessment);
       }, error => {
-        console.log(error);
         this.router.navigateByUrl('/assessments');
       }
     );
@@ -90,7 +88,6 @@ export class AssessmentQuizComponent implements OnInit {
         obj.answer = answer.id;
       }
     }
-    console.log(this.filledInQuestions);
   }
 
   isCurrentAnswer(question: QuizQuestion, answer: QuizAnswer) {
@@ -126,9 +123,6 @@ export class AssessmentQuizComponent implements OnInit {
       score: this.percentage,
       assessmentId: assessment.id
     };
-    console.log(body);
-    console.log('Correct answers: ' + this.score);
-    console.log('Percentage: ' + this.percentage + '%');
     this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
       .subscribe(() => {
         // Disable first part of template (quiz) + enable second part (confirmation)

@@ -51,7 +51,6 @@ export class AssessmentListComponent implements OnInit {
             }
           )
         });
-        console.log(this.assessments);
       }
     );
 

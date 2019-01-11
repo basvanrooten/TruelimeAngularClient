@@ -18,9 +18,6 @@ export class SkillSerializer {
 
     fromJsonList(json: any, key: string): Skill[] {
         const skills: Skill[] = [];
-
-        console.log(skills);
-
         json[key].forEach((element: any) => {
           skills.push(this.fromJson(element));
         });
