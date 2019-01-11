@@ -14,7 +14,7 @@
             <p>{{ quizQuestion.question }}</p>
           </div>
           <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action" [ngStyle]="{'background-color': this.isCurrentAnswer(quizQuestion, answer) ? 'lightblue' : ''}" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
+            <a class="list-group-item list-group-item-action" [ngStyle]="{'background-color': this.isCurrentAnswer(quizQuestion, answer) ? '#ff885b' : ''}" *ngFor="let answer of quizQuestion.answers" (click)="fillInQuestion(quizQuestion, answer)">
               <div >
                 {{ answer.answer }}
               </div>
@@ -29,7 +29,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-auto mr-auto">Total questions: {{ assessment?.questions?.length }}</div>
-            <div class="col-auto"><button type="submit" class="btn btn-primary"  [disabled]="assessment?.questions?.length > filledInQuestions?.length" (click)="postScoreToUser(assessment)">Finish Test</button></div>
+            <div class="col-auto"><button type="submit" class="btn" style="background-color: orangered; color: white" [disabled]="assessment?.questions?.length > filledInQuestions?.length" (click)="postScoreToUser(assessment)">Finish Test</button></div>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
                    aria-valuemax="100">{{ percentage }}%</div>
             </div>
 
-            <a class="btn btn-primary btn-lg mt-4" routerLink="/assessments" role="button">Continue</a>
+            <a class="btn btn-lg mt-4" style="background-color: orangered; color: white" routerLink="/assessments" role="button">Continue</a>
           </div>
         </div>
       </div>
