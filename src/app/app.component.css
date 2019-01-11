@@ -1,3 +1,12 @@
 body {
   margin-bottom: 40px;
 }
+
+.wrapper {
+  max-width: 1600px;
+}
+
+.header-img {
+  height: 8rem;
+  width: auto;
+}
