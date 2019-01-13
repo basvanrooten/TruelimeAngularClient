@@ -123,7 +123,7 @@ export class AssessmentQuizComponent implements OnInit {
       score: this.percentage,
       assessmentId: assessment.id
     };
-    this.userAssessmentService.createWithParameter(this.authService.getUserDetails()._id + '/assessmentscores', body)
+    this.userAssessmentService.createWithParameter(this.authService.getTokenUser()._id + '/assessmentscores', body)
       .subscribe(() => {
         // Disable first part of template (quiz) + enable second part (confirmation)
         this.testTaken = true;
@@ -135,7 +135,7 @@ export class AssessmentQuizComponent implements OnInit {
 
   }
 
-  returnToProfile(){
+  returnToProfile() {
     this.router.navigateByUrl('/profile');
   }
 }
