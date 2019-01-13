@@ -17,7 +17,7 @@ export class UserSkillService extends ResourceService<Skill> {
   constructor(httpClient: HttpClient, authService: AuthService, skillService: SkillService) {
     super(
       httpClient,
-      `https://truelimenode.herokuapp.com/api/users/${authService.getUserDetails()._id}`,
+      `https://truelimenode.herokuapp.com/api/users/${authService.getTokenUser()._id}`,
       'skills',
       new HttpHeaders({
         'Content-Type':  'application/json',

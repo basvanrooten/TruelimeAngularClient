@@ -38,7 +38,8 @@ export class ProfileComponent implements OnInit{
         this.fillProfileUserSkillsArray();
       }
     );
-    this.authService.getUserInformation().subscribe(
+
+    this.authService.getUser().subscribe(
       result => {
         this.userDetails = result;
       }
@@ -73,7 +74,7 @@ export class ProfileComponent implements OnInit{
   }
 // POST certain Skill (from ASP.NET) and attach it to User (Node)
 postSkillToUser(skill: Skill) {
-  this.userSkillService.createWithParameter(this.authService.getUserDetails()._id, skill);
+  this.userSkillService.createWithParameter(this.authService.getTokenUser()._id, skill);
 }
 
 }

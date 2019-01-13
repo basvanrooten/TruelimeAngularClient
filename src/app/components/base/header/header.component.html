@@ -24,7 +24,7 @@
 
       <ul class="navbar-nav">
         <li *ngIf="authService.isLoggedIn()" class="nav-item mr-3">
-          <span class="navbar-text" style="color: white;">Welcome, {{ userDetails?.firstName }} {{ userDetails?.lastName }}</span>
+          <span class="navbar-text" style="color: white;">Welcome!</span>
         </li>
         <li *ngIf="authService.isLoggedIn()" class="nav-item form-inline">
           <button (click)="authService.deleteCookie()" class="btn btn-outline-light" >Log Out</button>

@@ -13,7 +13,6 @@ import { HttpHeaders } from '@angular/common/http';
 })
 
 export class AuthService {
-
   private cookieValue: String = 'UNKNOWN';
   private cookieExpireDate: Date;
 
@@ -70,7 +69,7 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    const user = this.getUserDetails();
+    const user = this.getTokenUser();
     if (user) {
       return user.exp > Date.now() / 1000;
     } else {
@@ -79,7 +78,7 @@ export class AuthService {
   }
 
   public isNotLoggedIn(): boolean {
-    const user = this.getUserDetails();
+    const user = this.getTokenUser();
     if (user) {
       return user.exp < Date.now() / 1000;
     } else {
@@ -87,7 +86,7 @@ export class AuthService {
     }
   }
 
-  public getUserDetails(): User {
+  public getTokenUser(): User {
     const token = this.getCookie();
     let payload;
     if (token) {
@@ -99,13 +98,13 @@ export class AuthService {
     }
   }
 
-  public getUserInformation(): Observable<User> {
+  public getUser(): Observable<User> {
     const httpOptions = { headers:   new HttpHeaders({
       'Content-Type':  'application/json',
       'x-access-token': `${this.getCookie()}`
     }) };
 
-    return this.httpClient.get<User>(`${environment.urlExpress}/users/${this.getUserDetails()._id}`, httpOptions).pipe(
+    return this.httpClient.get<User>(`${environment.urlExpress}/users/${this.getTokenUser()._id}`, httpOptions).pipe(
       map((userRes: any) => {
         return userRes;
       })
