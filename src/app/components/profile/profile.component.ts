@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit{
         );
 
         // All CertificateId's attached to logged in User (Node)
-        this.userCertificateService.listSpecific(this.authService.getTokenUser()._id + '/certificates').subscribe(
+        this.userCertificateService.list().subscribe(
           result => {
             this.userCertificates = result;
             this.fillProfileUserCertificatesArray();
@@ -125,10 +125,17 @@ export class ProfileComponent implements OnInit{
     if (this.editMode) {
       this.editMode = false;
       this.profileUserSkills = [];
+      this.profileUserCertificates = [];
       this.userSkillService.list().subscribe(
         result => {
           this.userSkills = result;
           this.fillProfileUserSkillsArray();
+        }
+      );
+      this.userCertificateService.list().subscribe(
+        result => {
+          this.userCertificates = result;
+          this.fillProfileUserCertificatesArray();
         }
       )
     } else if (!this.editMode) {
