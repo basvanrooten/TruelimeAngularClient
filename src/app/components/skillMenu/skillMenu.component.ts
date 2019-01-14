@@ -63,13 +63,7 @@ export class SkillMenuComponent implements OnInit {
     this.onSave();
   }
 
-  filterList(listToFilter, userSkillList){
-
-    return listToFilter.filter(skill =>  
-      !userSkillList.reduce((acc, userSkill) => 
-          skill.id == userSkill.id || acc
-        ,false)
-    );
-
+  filterList(listToFilter, userSkillList) {
+    return listToFilter.filter(skill => !userSkillList.reduce((acc, userSkill) => skill.id === userSkill.id || acc, false));
   }
 }
