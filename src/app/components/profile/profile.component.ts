@@ -21,24 +21,22 @@ export class ProfileComponent implements OnInit{
   public allSkills: any;
   // All Skills attached to User (Node)
   public userSkills: any;
+  public profileUserSkills: String[] = [];
 
   // All available Assessments (ASP.NET)
   public allAssessments: any;
   // All AssessmentId's with score attached to User (Node)
   public userAssessments: any;
+  public profileUserAssessments: String[] = [];
 
   // All available Certificates (ASP.NET)
   public allCertificates: any;
   // All CertificateId's with score attached to User (Node)
   public userCertificates: any;
-
-  // Other
-  public userDetails: User;
-
-  // User entity arrays
-  public profileUserSkills: String[] = [];
-  public profileUserAssessments: String[] = [];
   public profileUserCertificates: String[] = [];
+
+  // User Details
+  public userDetails: User;
 
   constructor(private userSkillService: UserSkillService,
               private skillService: SkillService,
@@ -151,5 +149,4 @@ export class ProfileComponent implements OnInit{
       console.error("Invalid edit state..")
     }
   }
-
 }
