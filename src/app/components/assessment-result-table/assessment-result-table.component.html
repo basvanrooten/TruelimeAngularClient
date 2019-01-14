@@ -1,14 +1,19 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Assessment</th>
+      <th scope="col">Title</th>
       <th scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Test</td>
-      <td>20% passed</td>
+    <tr *ngFor="let assessment of profileUserAssessments; let i = index;">
+      <td>{{assessment?.split(',')[0]}}</td>
+      <td>{{assessment?.split(',')[1]}}% passed</td>
+    </tr>
+
+    <tr *ngIf="profileUserAssessments.length === 0">
+      <td>You have not taken any assessments</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
