@@ -7,6 +7,7 @@ import {AssessmentService} from '../../services/assessment.service';
 import {UserCertificateService} from '../../services/user-certificate.service';
 import {CertificateService} from '../../services/certificate.service';
 import {UserAssessmentScoreService} from '../../services/user-assessment-score.service';
+import {forkJoin} from 'rxjs';
 
 @Component({
   selector: 'app-profile',
