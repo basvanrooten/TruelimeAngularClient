@@ -68,6 +68,16 @@
                         <app-skillMenu>Loading available skills</app-skillMenu>
                       </div>
                     </div>
+                    <hr>
+                    <div class="certificates">
+                      <h5>Certificates</h5>
+                      <div *ngIf="this.editMode === false">
+                        <p>Hier komen certificates als edit mode false is</p>
+                      </div>
+                      <div *ngIf="this.editMode === true">
+                        <app-certificate-menu>Loading available certificates</app-certificate-menu>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
