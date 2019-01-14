@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
+import {Component, DoCheck, OnChanges, OnInit, Pipe} from '@angular/core';
 import { UserSkillService } from '../../services/user-skill.service';
 import { AuthService } from '../../services/auth.service';
 import { SkillService } from '../../services/skill.service';
@@ -7,13 +7,13 @@ import {AssessmentService} from '../../services/assessment.service';
 import {UserCertificateService} from '../../services/user-certificate.service';
 import {CertificateService} from '../../services/certificate.service';
 import {UserAssessmentScoreService} from '../../services/user-assessment-score.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit{
   public editMode: Boolean = false;
 
@@ -48,43 +48,57 @@ export class ProfileComponent implements OnInit{
               private authService: AuthService) { }
 
   ngOnInit() {
-    forkJoin(
-      this.authService.getUser(),
-      this.skillService.list(),
-      this.assessmentService.list(),
-      this.certificateService.list()
-      )
-      .subscribe(results => {
+    // User details (Node)
+    this.authService.getUser().subscribe(
+      result => {
+        this.userDetails = result;
+      }
+    );
 
-        this.userDetails = results[0];
-        this.allSkills = results[1];
-        this.allAssessments = results[2];
-        this.allCertificates = results[3];
+    // All available Skills (ASP.NET)
+    this.skillService.list().subscribe(
+      result => {
+        this.allSkills = result;
+      }
+    );
 
+    // All available Assessments (ASP.NET)
+    this.assessmentService.list().subscribe(
+      result => {
+        this.allAssessments = result;
+      }
+    );
 
-        // All Skills attached to logged in User (Node)
-        this.userSkillService.list().subscribe(
-          result => {
-            this.userSkills = result;
-            this.fillProfileUserSkillsArray();
-          }
-        );
-        // All AssessmentId's with scores attached to logged in User (Node)
-        this.userAssessmentScoreService.listSpecific(this.authService.getTokenUser()._id + '/assessmentscores').subscribe(
-          result => {
-            this.userAssessments = result;
-            this.fillProfileUserAssessmentsArray();
-          }
-        );
+    // All available Certificates (ASP.NET)
+    this.certificateService.list().subscribe(
+      result => {
+        this.allCertificates = result;
+      }
+    );
 
-        // All CertificateId's attached to logged in User (Node)
-        this.userCertificateService.listSpecific(this.authService.getTokenUser()._id + '/certificates').subscribe(
-          result => {
-            this.userCertificates = result;
-            this.fillProfileUserCertificatesArray();
-          }
-        );
-      });
+    // All Skills attached to logged in User (Node)
+    this.userSkillService.list().subscribe(
+      result => {
+        this.userSkills = result;
+        this.fillProfileUserSkillsArray();
+      }
+    );
+
+    // All AssessmentId's with scores attached to logged in User (Node)
+    this.userAssessmentScoreService.listSpecific(this.authService.getTokenUser()._id + '/assessmentscores').subscribe(
+      result => {
+        this.userAssessments = result;
+        this.fillProfileUserAssessmentsArray();
+      }
+    );
+
+    // All CertificateId's attached to logged in User (Node)
+    this.userCertificateService.listSpecific(this.authService.getTokenUser()._id + '/certificates').subscribe(
+      result => {
+        this.userCertificates = result;
+        this.fillProfileUserCertificatesArray();
+      }
+    );
   }
 
   // Fill User Skills Array
@@ -108,6 +122,7 @@ export class ProfileComponent implements OnInit{
       });
     });
     console.log(this.profileUserAssessments);
+    this.profileUserAssessments.reverse();
   }
 
   // Fill User Certificate Array
@@ -138,3 +153,5 @@ export class ProfileComponent implements OnInit{
     }
   }
 }
+
+
