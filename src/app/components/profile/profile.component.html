@@ -8,12 +8,14 @@
               <div class="col-md-9">
                 <div class="row">
                   <div class="col-3">
-                    <img src="https://cdn2.iconfinder.com/data/icons/business-persons-flat-1/512/person_4-512.png" class="img-fluid rounded-circle" style="background-color: slategrey">
+                    <img src="https://cdn2.iconfinder.com/data/icons/business-persons-flat-1/512/person_4-512.png"
+                      class="img-fluid rounded-circle" style="background-color: slategrey">
                   </div>
                   <div class="col-9">
                     <h1>{{ userDetails?.firstName }} {{ userDetails?.lastName }}</h1>
                     <p>{{ userDetails?.email }}</p>
-                    <button type="button" class="btn" style="background-color: orangered; color: white" (click)="editToggle()">Edit profile</button>
+                    <button type="button" class="btn" style="background-color: orangered; color: white" (click)="editToggle()">Edit
+                      profile</button>
                   </div>
                 </div>
               </div>
@@ -30,10 +32,11 @@
       </div>
     </div>
   </div>
-  <div class="row mt-5" >
-    <div class="container" >
-      <div class="card bg-light" >
-        <div class="card-header" style="background-color: yellowgreen; color: white">Overview <span *ngIf="this.editMode === true" class="badge badge-pill badge-info float-right" style="background-color: orangered">Edit mode</span></div>
+  <div class="row mt-5">
+    <div class="container">
+      <div class="card bg-light">
+        <div class="card-header" style="background-color: yellowgreen; color: white">Overview <span *ngIf="this.editMode === true"
+            class="badge badge-pill badge-info float-right" style="background-color: orangered">Edit mode</span></div>
         <div class="card-body">
           <div class="container">
             <div class="row">
@@ -83,21 +86,12 @@
                   <div class="card-body">
                     <h5 class="card-title">Recent Activity</h5>
                     <ul class="timeline">
-                      <li>
-                        <p><i><small>6 months ago</small></i></p>
-                        <h5>Hans van der Linden</h5>
-                        <p>Added new skill</p>
-                      </li>
-                      <li>
-                        <p><i><small>6 months ago</small></i></p>
-                        <h5>Hans van der Linden</h5>
-                        <p>Removed skill from user</p>
-                      </li>
-                      <li>
-                        <p><i><small>7 months ago</small></i></p>
-                        <h5>Hans van der Linden</h5>
-                        <p>Updated skill</p>
-                      </li>
+                      <div *ngFor="let assessment of profileUserAssessments; let i = index;">
+                        <li *ngIf="i < 3">
+                          <h5>{{assessment?.split(',')[0]}}</h5>
+                          <p>Attempted score: {{assessment?.split(',')[1]}}%</p>
+                        </li>
+                      </div>
                     </ul>
                   </div>
                 </div>

@@ -8,6 +8,10 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { SkillService } from './skill.service';
 import { observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CertificateSerializer } from './serializers/certificate.serializer';
+import { Certificate } from '../models/certificate.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +21,7 @@ export class UserCertificateService extends ResourceService<Certificate> {
     super(
       httpClient,
       `https://truelimenode.herokuapp.com/api/users/${authService.getTokenUser()._id}`,
+
       'certificates',
       new HttpHeaders({
         'Content-Type':  'application/json',
@@ -48,3 +53,4 @@ export class UserCertificateService extends ResourceService<Certificate> {
     );
   }
 }
+
