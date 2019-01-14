@@ -30,7 +30,6 @@ export class UserCertificateService extends ResourceService<Certificate> {
   // }
 
   public updateList(item: any): Observable<any> {
-    console.log(item.certificateList);
     return this.httpClient.put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions).pipe(
       map((result: any) => {
         return result;
