@@ -53,7 +53,6 @@ export class AssessmentResultTableComponent implements OnInit {
         }
       });
     });
-    console.log(this.profileUserAssessments);
     this.profileUserAssessments.reverse();
   }
 }
