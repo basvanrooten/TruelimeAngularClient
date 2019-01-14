@@ -62,6 +62,7 @@ export abstract class ResourceService<T extends Resource> {
     }
 
     private convertData(data: any): T[] {
+      console.log(data);
       return this.serializer.fromJsonList(data, 'processedObjects');
     }
 }

@@ -4,5 +4,6 @@ import { QuizQuestion } from './quizquestion.model';
 export class Assessment extends Resource {
   public id: Number;
   public name: String;
+  public score: Number;
   public questions: QuizQuestion[];
 }

@@ -2,12 +2,11 @@ import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
 import { UserSkillService } from '../../services/user-skill.service';
 import { AuthService } from '../../services/auth.service';
 import { SkillService } from '../../services/skill.service';
-import { Skill } from '../../models/skill.model';
 import { User } from 'src/app/models/user.model';
-import {UserAssessmentService} from '../../services/user-assessment.service';
 import {AssessmentService} from '../../services/assessment.service';
 import {UserCertificateService} from '../../services/user-certificate.service';
 import {CertificateService} from '../../services/certificate.service';
+import {UserAssessmentScoreService} from '../../services/user-assessment-score.service';
 
 @Component({
   selector: 'app-profile',
@@ -40,7 +39,8 @@ export class ProfileComponent implements OnInit{
 
   constructor(private userSkillService: UserSkillService,
               private skillService: SkillService,
-              private userAssessmentService: UserAssessmentService,
+              private userAssessmentService: UserAssessmentScoreService,
+              private userAssessmentScoreService: UserAssessmentScoreService,
               private assessmentService: AssessmentService,
               private userCertificateService: UserCertificateService,
               private certificateService:  CertificateService,
@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit{
     );
 
     // All AssessmentId's with scores attached to logged in User (Node)
-    this.userAssessmentService.listSpecific(this.authService.getTokenUser()._id).subscribe(
+    this.userAssessmentScoreService.listSpecific(this.authService.getTokenUser()._id + '/assessmentscores').subscribe(
       result => {
         this.userAssessments = result;
         this.fillProfileUserAssessmentsArray();
@@ -92,7 +92,7 @@ export class ProfileComponent implements OnInit{
     );
 
     // All CertificateId's attached to logged in User (Node)
-    this.userCertificateService.listSpecific(this.authService.getTokenUser()._id).subscribe(
+    this.userCertificateService.listSpecific(this.authService.getTokenUser()._id + '/certificates').subscribe(
       result => {
         this.userCertificates = result;
         this.fillProfileUserCertificatesArray();
@@ -115,11 +115,12 @@ export class ProfileComponent implements OnInit{
   fillProfileUserAssessmentsArray() {
     this.userAssessments.forEach(element => {
       this.allAssessments.forEach(assessment => {
-        if(element.id == assessment.id) {
-          this.profileUserAssessments.push(assessment.name + ', ' + element.score + '%');
+        if(element.assessmentId == assessment.id) {
+          this.profileUserAssessments.push(assessment.name + ',' + element.score);
         }
       });
     });
+    console.log(this.profileUserAssessments);
   }
 
   // Fill User Certificate Array
