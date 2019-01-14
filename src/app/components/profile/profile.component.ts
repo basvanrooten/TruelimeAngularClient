@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
+import {Component, DoCheck, OnChanges, OnInit, Pipe} from '@angular/core';
 import { UserSkillService } from '../../services/user-skill.service';
 import { AuthService } from '../../services/auth.service';
 import { SkillService } from '../../services/skill.service';
@@ -7,13 +7,13 @@ import {AssessmentService} from '../../services/assessment.service';
 import {UserCertificateService} from '../../services/user-certificate.service';
 import {CertificateService} from '../../services/certificate.service';
 import {UserAssessmentScoreService} from '../../services/user-assessment-score.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit{
   public editMode: Boolean = false;
 
@@ -108,6 +108,7 @@ export class ProfileComponent implements OnInit{
       });
     });
     console.log(this.profileUserAssessments);
+    this.profileUserAssessments.reverse();
   }
 
   // Fill User Certificate Array
@@ -145,3 +146,5 @@ export class ProfileComponent implements OnInit{
     }
   }
 }
+
+

@@ -40,6 +40,7 @@ import { AssessmentQuizComponent } from './components/assessment-quiz/assessment
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CertificateMenuComponent } from './components/certificate-menu/certificate-menu.component';
+import { AssessmentResultTableComponent } from './components/assessment-result-table/assessment-result-table.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CertificateMenuComponent } from './components/certificate-menu/certific
     AssessmentListComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    CertificateMenuComponent
+    CertificateMenuComponent,
+    AssessmentResultTableComponent
   ],
   imports: [
     BrowserModule,
