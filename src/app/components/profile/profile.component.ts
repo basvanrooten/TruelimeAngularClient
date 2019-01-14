@@ -6,6 +6,8 @@ import { Skill } from '../../models/skill.model';
 import { User } from 'src/app/models/user.model';
 import {UserAssessmentService} from '../../services/user-assessment.service';
 import {AssessmentService} from '../../services/assessment.service';
+import {UserCertificateService} from '../../services/user-certificate.service';
+import {CertificateService} from '../../services/certificate.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,24 +15,37 @@ import {AssessmentService} from '../../services/assessment.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-
   public editMode: Boolean = false;
+
   // All available Skills (ASP.NET)
   public allSkills: any;
   // All Skills attached to User (Node)
   public userSkills: any;
+
   // All available Assessments (ASP.NET)
   public allAssessments: any;
   // All AssessmentId's with score attached to User (Node)
   public userAssessments: any;
+
+  // All available Certificates (ASP.NET)
+  public allCertificates: any;
+  // All CertificateId's with score attached to User (Node)
+  public userCertificates: any;
+
+  // Other
   public userDetails: User;
+
+  // User entity arrays
   public profileUserSkills: String[] = [];
   public profileUserAssessments: String[] = [];
+  public profileUserCertificates: String[] = [];
 
   constructor(private userSkillService: UserSkillService,
               private skillService: SkillService,
               private userAssessmentService: UserAssessmentService,
               private assessmentService: AssessmentService,
+              private userCertificateService: UserCertificateService,
+              private certificateService:  CertificateService,
               private authService: AuthService) { }
 
   ngOnInit() {
@@ -40,18 +55,28 @@ export class ProfileComponent implements OnInit{
         this.userDetails = result;
       }
     );
+
     // All available Skills (ASP.NET)
     this.skillService.list().subscribe(
       result => {
         this.allSkills = result;
       }
     );
+
     // All available Assessments (ASP.NET)
     this.assessmentService.list().subscribe(
       result => {
         this.allAssessments = result;
       }
     );
+
+    // All available Certificates (ASP.NET)
+    this.certificateService.list().subscribe(
+      result => {
+        this.allCertificates = result;
+      }
+    );
+
     // All Skills attached to logged in User (Node)
     this.userSkillService.list().subscribe(
       result => {
@@ -59,6 +84,7 @@ export class ProfileComponent implements OnInit{
         this.fillProfileUserSkillsArray();
       }
     );
+
     // All AssessmentId's with scores attached to logged in User (Node)
     this.userAssessmentService.listSpecific(this.authService.getTokenUser()._id).subscribe(
       result => {
@@ -66,8 +92,17 @@ export class ProfileComponent implements OnInit{
         this.fillProfileUserAssessmentsArray();
       }
     );
+
+    // All CertificateId's attached to logged in User (Node)
+    this.userCertificateService.listSpecific(this.authService.getTokenUser()._id).subscribe(
+      result => {
+        this.userCertificates = result;
+        this.fillProfileUserCertificatesArray();
+      }
+    );
   }
 
+  // Fill User Skills Array
   fillProfileUserSkillsArray() {
     this.userSkills.forEach(element => {
       this.allSkills.forEach(skill => {
@@ -78,11 +113,23 @@ export class ProfileComponent implements OnInit{
     });
   }
 
+  // Fill User Assessment Array
   fillProfileUserAssessmentsArray() {
     this.userAssessments.forEach(element => {
       this.allAssessments.forEach(assessment => {
         if(element.id == assessment.id) {
-          this.profileUserAssessments.push(assessment.name, element.score);
+          this.profileUserAssessments.push(assessment.name + ', ' + element.score + '%');
+        }
+      });
+    });
+  }
+
+  // Fill User Certificate Array
+  fillProfileUserCertificatesArray() {
+    this.userCertificates.forEach(element => {
+      this.allCertificates.forEach(certificate => {
+        if(element.id == certificate.id) {
+          this.profileUserCertificates.push(certificate.name);
         }
       });
     });
