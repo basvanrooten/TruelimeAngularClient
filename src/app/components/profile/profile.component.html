@@ -60,7 +60,8 @@
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
                           <span *ngFor="let skill of profileUserSkills;" class="badge badge-pill badge-secondary m-1">{{skill}}</span>
-                          <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">This user doesn't have skills yet.</p>
+                          <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">This user doesn't
+                            have skills yet.</p>
                         </div>
                       </div>
 
@@ -74,7 +75,8 @@
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
                           <span *ngFor="let certificate of profileUserCertificates;" class="badge badge-pill badge-secondary m-1">{{certificate}}</span>
-                          <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">This user doesn't have certificates yet.</p>
+                          <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">This
+                            user doesn't have certificates yet.</p>
                         </div>
                       </div>
                       <div *ngIf="this.editMode === true">
@@ -84,7 +86,7 @@
                     <hr>
                     <div class="assessments">
                       <h5>Assessments</h5>
-                        <app-assessment-result-table>Loading assessments</app-assessment-result-table>
+                      <app-assessment-result-table>Loading assessments</app-assessment-result-table>
                     </div>
                   </div>
                 </div>
@@ -100,6 +102,12 @@
                           <p>Attempted score: {{assessment?.split(',')[1]}}%</p>
                         </li>
                       </div>
+                      <div>
+                        <li *ngIf="profileUserAssessments.length == 0">
+                          <p>No Recent Activity</p>
+                        </li>
+                      </div>
+
                     </ul>
                   </div>
                 </div>
