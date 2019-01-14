@@ -22,3 +22,4 @@ export class UserAssessmentService extends ResourceService<Assessment> {
       new AssessmentSerializer());
   }
 }
+

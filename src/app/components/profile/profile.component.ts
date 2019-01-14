@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth.service';
 import { SkillService } from '../../services/skill.service';
 import { Skill } from '../../models/skill.model';
 import { User } from 'src/app/models/user.model';
+import {UserAssessmentService} from '../../services/user-assessment.service';
+import {AssessmentService} from '../../services/assessment.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,18 +19,37 @@ export class ProfileComponent implements OnInit{
   public allSkills: any;
   // All Skills attached to User (Node)
   public userSkills: any;
+  // All available Assessments (ASP.NET)
+  public allAssessments: any;
+  // All AssessmentId's with score attached to User (Node)
+  public userAssessments: any;
   public userDetails: User;
   public profileUserSkills: String[] = [];
+  public profileUserAssessments: String[] = [];
 
   constructor(private userSkillService: UserSkillService,
               private skillService: SkillService,
+              private userAssessmentService: UserAssessmentService,
+              private assessmentService: AssessmentService,
               private authService: AuthService) { }
 
   ngOnInit() {
+    // User details (Node)
+    this.authService.getUser().subscribe(
+      result => {
+        this.userDetails = result;
+      }
+    );
     // All available Skills (ASP.NET)
     this.skillService.list().subscribe(
       result => {
         this.allSkills = result;
+      }
+    );
+    // All available Assessments (ASP.NET)
+    this.assessmentService.list().subscribe(
+      result => {
+        this.allAssessments = result;
       }
     );
     // All Skills attached to logged in User (Node)
@@ -38,10 +59,11 @@ export class ProfileComponent implements OnInit{
         this.fillProfileUserSkillsArray();
       }
     );
-
-    this.authService.getUser().subscribe(
+    // All AssessmentId's with scores attached to logged in User (Node)
+    this.userAssessmentService.listSpecific(this.authService.getTokenUser()._id).subscribe(
       result => {
-        this.userDetails = result;
+        this.userAssessments = result;
+        this.fillProfileUserAssessmentsArray();
       }
     );
   }
@@ -51,6 +73,16 @@ export class ProfileComponent implements OnInit{
       this.allSkills.forEach(skill => {
         if (element.id == skill.id) {
           this.profileUserSkills.push(skill.name);
+        }
+      });
+    });
+  }
+
+  fillProfileUserAssessmentsArray() {
+    this.userAssessments.forEach(element => {
+      this.allAssessments.forEach(assessment => {
+        if(element.id == assessment.id) {
+          this.profileUserAssessments.push(assessment.name, element.score);
         }
       });
     });
@@ -72,9 +104,5 @@ export class ProfileComponent implements OnInit{
       console.error("Invalid edit state..")
     }
   }
-// POST certain Skill (from ASP.NET) and attach it to User (Node)
-postSkillToUser(skill: Skill) {
-  this.userSkillService.createWithParameter(this.authService.getTokenUser()._id, skill);
-}
 
 }
