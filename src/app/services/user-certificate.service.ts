@@ -16,7 +16,6 @@ export class UserCertificateService extends ResourceService<Certificate> {
     super(
       httpClient,
       `https://truelimenode.herokuapp.com/api/users/${authService.getTokenUser()._id}`,
-
       'certificates',
       new HttpHeaders({
         'Content-Type':  'application/json',

@@ -60,7 +60,7 @@
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
                           <span *ngFor="let skill of profileUserSkills;" class="badge badge-pill badge-secondary m-1">{{skill}}</span>
-                          <p *ngIf="profileUserSkills == undefined">This user doesn't have skills yet.</p>
+                          <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">This user doesn't have skills yet.</p>
                         </div>
                       </div>
 
@@ -72,7 +72,10 @@
                     <div class="certificates">
                       <h5>Certificates</h5>
                       <div *ngIf="this.editMode === false">
-                        <p>Hier komen certificates als edit mode false is</p>
+                        <div class="skills-badges">
+                          <span *ngFor="let certificate of profileUserCertificates;" class="badge badge-pill badge-secondary m-1">{{certificate}}</span>
+                          <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">This user doesn't have certificates yet.</p>
+                        </div>
                       </div>
                       <div *ngIf="this.editMode === true">
                         <app-certificate-menu>Loading available certificates</app-certificate-menu>
