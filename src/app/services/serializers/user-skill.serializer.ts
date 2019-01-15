@@ -30,7 +30,6 @@ export class UserSkillSerializer {
             if (element.levelId > 0) {
                 skill.levelId = element.levelId;
             }
-            console.log(skill);
             skills.push(skill);
         });
 

@@ -27,6 +27,7 @@ export class SkillMenuComponent implements OnInit {
         this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
         this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
     });
+
   }
 
   private getFullSkills(skillList, userSkillList) {
@@ -34,6 +35,7 @@ export class SkillMenuComponent implements OnInit {
     skillList.forEach(element => {
       userSkillList.forEach(skill => {
             if (element.id == skill.id) {
+                element.levelId = skill.levelId;
                 skills.push(element);
             }
         });
@@ -57,7 +59,6 @@ export class SkillMenuComponent implements OnInit {
         .subscribe(results => {
           this.skillInput = results[0];
           this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
-          console.log(this.userSkillList);
           this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
         });
     }, (err) => {
