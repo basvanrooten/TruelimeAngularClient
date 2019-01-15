@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registerModel: User;
   registerFields: Array<FormlyFieldConfig>;
+  error: boolean = false;
+  errorMessage: string = '';
+
   constructor(private authService: AuthService, private router: Router) {
     this.registerForm = new FormGroup({});
     this.registerModel = new User();
@@ -37,7 +40,8 @@ export class RegisterComponent implements OnInit {
     .subscribe(() => {
       this.router.navigateByUrl('/profile');
     }, (err) => {
-      console.error(err);
+      this.error = true;
+      this.errorMessage = err.error.message;
     });
   }
 }
