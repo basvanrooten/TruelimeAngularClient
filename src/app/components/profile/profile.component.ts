@@ -94,13 +94,15 @@ export class ProfileComponent implements OnInit{
     this.userSkills.forEach(element => {
       this.allSkills.forEach(skill => {
         if (element.id == skill.id) {
+          let levelAddition = '';
           this.allSkills.forEach(result => {
             result.levels.forEach(level => {
               if(level.id == element.levelId) {
-                this.profileUserSkills.push(skill.name + ': '+ level.name);
+                levelAddition = ': '+ level.name
               }
             })
-          })
+          });
+          this.profileUserSkills.push(skill.name + levelAddition);
         }
       });
     });
