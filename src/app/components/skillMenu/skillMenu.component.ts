@@ -4,6 +4,7 @@ import { SkillService } from '../../services/skill.service';
 import { UserSkillService } from '../../services/user-skill.service';
 import { forkJoin } from 'rxjs';
 import { Skill } from 'src/app/models/skill.model';
+import {UserLevelService} from '../../services/user-level.service';
 
 @Component({
   selector: 'app-skillMenu',
@@ -15,7 +16,9 @@ export class SkillMenuComponent implements OnInit {
   skillCollection: any;
   skillInput: any;
 
-  constructor(private skillService: SkillService, private userSkillService: UserSkillService) { }
+  constructor(private skillService: SkillService,
+              private userSkillService: UserSkillService,
+              private userLevelService: UserLevelService) { }
 
   ngOnInit() {
     this.skillCollection = [];
@@ -64,6 +67,20 @@ export class SkillMenuComponent implements OnInit {
     }, (err) => {
       console.error(err);
     });
+  }
+
+  onClickDeleteLevel(skillId: Number, levelId: Number) {
+    this.userLevelService.deleteLevelFromSkill(skillId, levelId)
+      .subscribe(() => {
+        forkJoin(this.skillService.list(), this.userSkillService.list())
+          .subscribe(results => {
+            this.skillInput = results[0];
+            this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
+            this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
+          });
+      }, (err) => {
+        console.error(err);
+      });
   }
 
 
