@@ -5,6 +5,7 @@ export class SkillSerializer {
         const skill = new Skill();
         skill.id = json.id;
         skill.name = json.name;
+        skill.levels = json.levels;
 
         return skill;
     }

@@ -11,9 +11,10 @@ import { Skill } from 'src/app/models/skill.model';
   styleUrls: ['./skillMenu.component.css']
 })
 export class SkillMenuComponent implements OnInit {
-  userSkillList: any
-  skillCollection: any
-  skillInput: any 
+  userSkillList: any;
+  skillCollection: any;
+  skillInput: any;
+
   constructor(private skillService: SkillService, private userSkillService: UserSkillService) { }
 
   ngOnInit() {
@@ -25,7 +26,6 @@ export class SkillMenuComponent implements OnInit {
         this.skillInput = results[0];
         this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
         this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
-
     });
   }
 

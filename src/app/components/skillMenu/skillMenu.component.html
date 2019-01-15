@@ -13,13 +13,11 @@
       <h6>Current Skills</h6> <!-- Username? -->
       <div cdkDropList #skillListUser="cdkDropList" [cdkDropListData]="userSkillList" [cdkDropListConnectedTo]="[collectionlist]"
         class="example-list" (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let s of userSkillList" cdkDrag> {{s.name}} 
+          <div class="example-box" *ngFor="let s of userSkillList" cdkDrag> {{s.name}}
             <span class="badge badge-lime badge-pill"><span class="mdi mdi-close" role="button"></span></span> 
             <span data-toggle="dropdown" class="mdi mdi-arrow-down-drop-circle-outline" role="button" aria-hidden="true"></span>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-menu" *ngFor="let l of s.levels">
+              <a class="dropdown-item" >{{ l.name }}</a>
             </div>
           </div>
       </div>
