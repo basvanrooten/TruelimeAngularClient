@@ -47,14 +47,19 @@ export class SkillMenuComponent implements OnInit {
     this.userSkillList.forEach(element => {
         skillList.push(element.id);
     });
-
       this.userSkillService.updateList({skillList}).subscribe();
   }
 
   onClickLevel(levelId: Number, skillId: Number) {
     this.userSkillService.addLevelToSkill(skillId, levelId)
     .subscribe(() => {
-
+      forkJoin(this.skillService.list(), this.userSkillService.list())
+        .subscribe(results => {
+          this.skillInput = results[0];
+          this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
+          console.log(this.userSkillList);
+          this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
+        });
     }, (err) => {
       console.error(err);
     });

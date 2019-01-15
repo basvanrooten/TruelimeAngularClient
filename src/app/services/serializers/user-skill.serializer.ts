@@ -27,9 +27,10 @@ export class UserSkillSerializer {
         json.forEach(element => {
             const skill = new Skill();
             skill.id = element.skillId;
-            if (!element.levelId === null) {
+            if (element.levelId > 0) {
                 skill.levelId = element.levelId;
             }
+            console.log(skill);
             skills.push(skill);
         });
 
