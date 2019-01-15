@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit{
               if(level.id == element.levelId) {
                 levelAddition = ': '+ level.name
               }
-            })
+            });
           });
           this.profileUserSkills.push(skill.name + levelAddition);
         }
