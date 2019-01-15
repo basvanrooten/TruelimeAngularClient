@@ -29,10 +29,6 @@ export class SkillMenuComponent implements OnInit {
         this.skillInput = results[0];
         this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
         this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
-        console.log('this.skillInput');
-        console.log(this.skillInput);
-        console.log('this.userSkillList');
-        console.log(this.userSkillList);
     });
 
   }
@@ -56,8 +52,6 @@ export class SkillMenuComponent implements OnInit {
     this.userSkillList.forEach(element => {
         skillList.push(element.id);
     });
-    console.log('skillMenuComponent:');
-    console.log(skillList);
       this.userSkillService.updateList({skillList}, this.skillCollection).subscribe(() => {
 
       });
@@ -71,10 +65,6 @@ export class SkillMenuComponent implements OnInit {
           this.skillInput = results[0];
           this.userSkillList = this.getFullSkills(this.skillInput, results[1]);
           this.skillCollection = this.filterList(this.skillInput, this.userSkillList);
-          console.log('this.skillInput');
-          console.log(this.skillInput);
-          console.log('this.userSkillList');
-          console.log(this.userSkillList);
         });
     }, (err) => {
       console.error(err);

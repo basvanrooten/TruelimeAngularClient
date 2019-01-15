@@ -5,12 +5,11 @@
         <div class="card-body">
           <h5 class="card-title">Available assessments</h5>
         </div>
-        <table class="table">
+        <table class="table" style="float: inherit">
           <tbody>
             <tr *ngFor="let assessment of assessments; let i = index">
-              <td>{{assessment?.name}}</td>
-              <td>Laatste score: <strong>TODO</strong></td>
-              <td><a class="btn" style="background-color: orangered; color: white" routerLink="/assessment/{{assessment?.id}}" role="button">Start Test</a></td>
+              <td><p style="margin-left: 20px;">{{assessment?.name}}</p></td>
+              <td><a class="btn" style="background-color: orangered; margin-right: 20px; float: right; color: white" routerLink="/assessment/{{assessment?.id}}" role="button">Start Test</a></td>
             </tr>
             <tr *ngIf="assessments == null">
               <td>No assessments available</td>
