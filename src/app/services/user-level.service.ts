@@ -13,7 +13,7 @@ import { observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class UserSkillService extends ResourceService<Skill> {
+export class UserLevelService extends ResourceService<Skill> {
   constructor(httpClient: HttpClient, authService: AuthService, skillService: SkillService) {
     super(
       httpClient,
@@ -26,34 +26,8 @@ export class UserSkillService extends ResourceService<Skill> {
       new UserSkillSerializer(skillService));
   }
 
-  // public updateList(item: any): Observable<Skill> {
-  //   return this.httpClient
-  //     .put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions);
-  // }
-
-  public updateList(item: any): Observable<any> {
-    return this.httpClient.put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions).pipe(
-      map((result: any) => {
-        return result;
-      })
-    );
-  }
-
-  list(): Observable<Skill[]> {
-      return this.httpClient
-      .get(`${this.url}/${this.endpoint}`, this.httpOptions)
-      .pipe(map((data: any) => {
-          return this.serializer.fromJsonList(data, 'processedObjects');
-      })
-    );
-  }
-
-  addLevelToSkill(levelId: Number, skillId: Number): Observable<any> {
-    const body = {
-      levelId: levelId
-    };
-
-    return this.httpClient.put<any>(`${this.url}/${this.endpoint}/${skillId}/levels/${levelId}`, body, this.httpOptions).pipe(
+  deleteLevelFromSkill(skillId: Number, levelId: Number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}/${this.endpoint}/${skillId}/levels/${levelId}`, this.httpOptions).pipe(
       map(data => this.serializer.fromJson(data))
     );
   }

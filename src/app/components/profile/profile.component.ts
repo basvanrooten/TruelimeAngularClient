@@ -8,6 +8,7 @@ import {UserCertificateService} from '../../services/user-certificate.service';
 import {CertificateService} from '../../services/certificate.service';
 import {UserAssessmentScoreService} from '../../services/user-assessment-score.service';
 import {forkJoin} from 'rxjs';
+import {Skill} from '../../models/skill.model';
 
 @Component({
   selector: 'app-profile',
@@ -93,7 +94,15 @@ export class ProfileComponent implements OnInit{
     this.userSkills.forEach(element => {
       this.allSkills.forEach(skill => {
         if (element.id == skill.id) {
-          this.profileUserSkills.push(skill.name);
+          let levelAddition = '';
+          this.allSkills.forEach(result => {
+            result.levels.forEach(level => {
+              if(level.id == element.levelId) {
+                levelAddition = ': '+ level.name
+              }
+            })
+          });
+          this.profileUserSkills.push(skill.name + levelAddition);
         }
       });
     });
@@ -121,6 +130,7 @@ export class ProfileComponent implements OnInit{
       });
     });
   }
+
 
   editToggle() {
     if (this.editMode) {
