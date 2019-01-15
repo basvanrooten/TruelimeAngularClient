@@ -22,16 +22,18 @@ export class UserSkillSerializer {
     }
 
     fromJsonList(json: any, key: string): Skill[] {
-
-        let skills: Skill[] = [];
+        const skills: Skill[] = [];
 
         json.forEach(element => {
-            let skill = new Skill();
+            const skill = new Skill();
             skill.id = element.skillId;
+            if (!element.levelId === null) {
+                skill.levelId = element.levelId;
+            }
             skills.push(skill);
+            console.log(skill);
         });
 
         return skills;
-
     }
 }
