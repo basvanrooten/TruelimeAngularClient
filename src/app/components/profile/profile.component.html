@@ -59,7 +59,11 @@
                       <h5>Skills</h5>
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
-                          <span *ngFor="let skill of profileUserSkills;" class="badge badge-pill badge-secondary m-1">{{ skill }}</span>
+                          <span *ngFor="let skill of profileUserSkills;" class="badge badge-pill badge-secondary m-1" style="color: black; background-color: ghostwhite; backdrop-filter: drop-shadow(5px); font-size: 16px; font-weight: normal; padding-left: 20px; padding-right: 20px">{{skill?.split(',')[0]}}
+                            <div>
+                              <h5 class="badge badge-pill badge-secondary m-1" style="background-color: orangered">{{skill?.split(',')[1]}}</h5>
+                            </div>
+                          </span>
                           <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">This user doesn't
                             have skills yet.</p>
                         </div>
@@ -74,7 +78,11 @@
                       <h5>Certificates</h5>
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
-                          <span *ngFor="let certificate of profileUserCertificates;" class="badge badge-pill badge-secondary m-1">{{certificate}}</span>
+                          <span *ngFor="let certificate of profileUserCertificates;" class="badge badge-pill badge-secondary m-1" style="font-size: 16px; padding: 10px; background-color: ghostwhite; font-weight: normal; color: black">{{certificate}}
+                            <div>
+                              <h5 class="badge badge-pill badge-secondary m-1" style="background-color: orangered"></h5>
+                            </div>
+                          </span>
                           <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">This
                             user doesn't have certificates yet.</p>
                         </div>
