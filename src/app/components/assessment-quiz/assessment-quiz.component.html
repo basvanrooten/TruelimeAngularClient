@@ -52,7 +52,7 @@
             <p>Your score:</p>
             <div class="progress align center-block" style="max-width: 24rem; margin-left: auto; margin-right:auto; height: 20px;">
               <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [style.width.%]="percentage" [attr.aria-valuenow]="percentage"
-                aria-valuemin="0" aria-valuemax="100">{{ percentage }}%</div>
+                aria-valuemin="0" aria-valuemax="100">{{ percentage/100 | percent }}</div>
             </div>
             <a class="btn btn-lg mt-4" style="background-color: orangered; color: white" routerLink="/assessments" role="button">Continue</a>
           </div>

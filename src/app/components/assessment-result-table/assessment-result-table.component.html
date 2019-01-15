@@ -9,8 +9,11 @@
     <tr *ngFor="let assessment of profileUserAssessments; let i = index;">
       <td>{{assessment?.split(',')[0]}}</td>
       <td style="width: 35%">
-        <div class="progress-bar progress-bar-striped progress-bar-animated badge badge-pill badge-secondary m-1" role="progressbar" [style.width.%]="assessment?.split(',')[1]" [attr.aria-valuenow]="assessment?.split(',')[1]"
-             aria-valuemin="0" aria-valuemax="100" style="font-size: 12px; background-color: orangered">{{assessment?.split(',')[1]}}%</div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width.%]="assessment?.split(',')[1]" [attr.aria-valuenow]="assessment?.split(',')[1]"
+             aria-valuemin="0" aria-valuemax="100" style="font-size: 12px; background-color: orangered">{{assessment?.split(',')[1]/100 | percent}}
+          </div>
+        </div>
       </td>
     </tr>
     <tr *ngIf="profileUserAssessments.length === 0">
