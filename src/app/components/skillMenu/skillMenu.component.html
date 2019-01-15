@@ -14,11 +14,10 @@
       <div cdkDropList #skillListUser="cdkDropList" [cdkDropListData]="userSkillList" [cdkDropListConnectedTo]="[collectionlist]"
         class="example-list" (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let s of userSkillList" cdkDrag>{{ s.name }}
-            <span class="badge badge-lime badge-pill" *ngIf="s.levelId > 0" (click)="onClickDeleteLevel(s.id, s.levelId)">{{s.levelId}}<span class="mdi mdi-close" role="button"></span></span>
-            <span data-toggle="dropdown" *ngIf="!s.levelId > 0" class="mdi mdi-arrow-down-drop-circle-outline" role="button" aria-hidden="true"></span>
+            <span class="badge badge-lime badge-pill" *ngIf="s.levelId > 0" (click)="onClickDeleteLevel(s.id, s.levelId)" [innerText]="getLevelName(s.levelId)"> <span class="mdi mdi-close" role="button"></span></span>
+            <span data-toggle="dropdown" *ngIf="!s.levelId > 0 && s.levels.length" class="mdi mdi-plus" role="button" aria-hidden="true"></span>
             <div class="dropdown-menu" >
               <a class="dropdown-item" *ngFor="let l of s.levels" (click)="onClickLevel(l.skillId, l.id)">{{ l.name }}</a>
-              <a class="dropdown-item" *ngIf="!s.levels.length">No levels</a>
             </div>
           </div>  
       </div>

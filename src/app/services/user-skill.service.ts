@@ -53,7 +53,7 @@ export class UserSkillService extends ResourceService<Skill> {
       levelId: levelId
     };
 
-    return this.httpClient.put<any>(`${this.url}/${this.endpoint}/${skillId}`, body, this.httpOptions).pipe(
+    return this.httpClient.put<any>(`${this.url}/${this.endpoint}/${skillId}/levels/${levelId}`, body, this.httpOptions).pipe(
       map(data => this.serializer.fromJson(data))
     );
   }

@@ -69,6 +69,17 @@ export class SkillMenuComponent implements OnInit {
     });
   }
 
+  getLevelName(levelId: Number) {
+    this.skillInput.forEach(skills => {
+      skills.levels.forEach(levels => {
+        if (levels.id === levelId) {
+          console.log(levels.name);
+          return levels.name;
+        }
+      });
+    });
+  }
+
   onClickDeleteLevel(skillId: Number, levelId: Number) {
     this.userLevelService.deleteLevelFromSkill(skillId, levelId)
       .subscribe(() => {
