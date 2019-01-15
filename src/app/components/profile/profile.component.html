@@ -64,8 +64,7 @@
                             <li class="badge badge-pill badge-secondary m-1">{{skill?.split(',')[0]}}</li>
                             <li class="badge badge-pill badge-secondary m-1" style="background-color: orangered">{{skill?.split(',')[1]}}</li>
                           </div>
-                          <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">This user doesn't
-                            have skills yet.</p>
+                          <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">You don't have any skills yet.</p>
                         </div>
                       </div>
 
@@ -83,8 +82,7 @@
                               <li class="badge badge-pill badge-secondary m-1">{{certificate}}</li>
                             </div>
                           </span>
-                          <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">This
-                            user doesn't have certificates yet.</p>
+                          <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">You don't have any certificates yet.</p>
                         </div>
                       </div>
                       <div *ngIf="this.editMode === true">
