@@ -31,7 +31,6 @@ export class UserSkillSerializer {
                 skill.levelId = element.levelId;
             }
             skills.push(skill);
-            console.log(skill);
         });
 
         return skills;

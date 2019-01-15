@@ -54,6 +54,7 @@ export class SkillMenuComponent implements OnInit {
   onClickLevel(levelId: Number, skillId: Number) {
     this.userSkillService.addLevelToSkill(skillId, levelId)
     .subscribe(() => {
+
     }, (err) => {
       console.error(err);
     });
