@@ -40,11 +40,21 @@ export class UserSkillService extends ResourceService<Skill> {
   }
 
   list(): Observable<Skill[]> {
-    return this.httpClient
-    .get(`${this.url}/${this.endpoint}`, this.httpOptions)
-    .pipe(map((data: any) => {
-        return this.serializer.fromJsonList(data, 'processedObjects');
-    })
+      return this.httpClient
+      .get(`${this.url}/${this.endpoint}`, this.httpOptions)
+      .pipe(map((data: any) => {
+          return this.serializer.fromJsonList(data, 'processedObjects');
+      })
+    );
+  }
+
+  addLevelToSkill(levelId: Number, skillId: Number): Observable<any> {
+    const body = {
+      levelId: levelId
+    };
+
+    return this.httpClient.put<any>(`${this.url}/${this.endpoint}/${skillId}`, body, this.httpOptions).pipe(
+      map(data => this.serializer.fromJson(data))
     );
   }
 

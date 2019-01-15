@@ -41,7 +41,7 @@ export class SkillMenuComponent implements OnInit {
     return skills;
   };
 
-  onSave(){
+  onSave() {
     let skillList = [];
 
     this.userSkillList.forEach(element => {
@@ -50,6 +50,16 @@ export class SkillMenuComponent implements OnInit {
 
       this.userSkillService.updateList({skillList}).subscribe();
   }
+
+  onClickLevel(levelId: Number, skillId: Number) {
+    this.userSkillService.addLevelToSkill(skillId, levelId)
+    .subscribe(() => {
+    }, (err) => {
+      console.error(err);
+    });
+  }
+
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
