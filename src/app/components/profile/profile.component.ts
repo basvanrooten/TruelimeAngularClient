@@ -98,11 +98,11 @@ export class ProfileComponent implements OnInit{
           this.allSkills.forEach(result => {
             result.levels.forEach(level => {
               if(level.id == element.levelId) {
-                levelAddition = ': '+ level.name
+                levelAddition = level.name;
               }
             });
           });
-          this.profileUserSkills.push(skill.name + levelAddition);
+          this.profileUserSkills.push(skill.name + ',' + levelAddition);
         }
       });
     });

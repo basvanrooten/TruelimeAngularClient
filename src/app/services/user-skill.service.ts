@@ -31,9 +31,18 @@ export class UserSkillService extends ResourceService<Skill> {
   //     .put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions);
   // }
 
-  public updateList(item: any): Observable<any> {
+  public updateList(item: any, skillBulk: any): Observable<any> {
     return this.httpClient.put<any>(`${this.url}/${this.endpoint}`, item, this.httpOptions).pipe(
       map((result: any) => {
+        console.log('hiero');
+        console.log(result);
+        // Add valid levelId's
+        skillBulk.forEach(skill => {
+          // result.forEach(returnedSkill => {
+          //
+          //   if(skill. == returnedSkill
+          //     })
+        });
         return result;
       })
     );

@@ -1,13 +1,23 @@
-<div class="mat-dialog-container" style="margin: 40px; padding-right: 80px; padding-left: 80px; padding-top: 20px; padding-bottom: 20px">
-  <br>
-  <br>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerModel)">
-    <formly-form [model]="registerModel" [fields]= "registerFields"
-    [form]="registerForm">
-    <button [disabled]="registerForm.invalid" type="submit"
-    mat-raised-button>Register</button>
-  </formly-form>
-  </form>
-  <br>
-  <br>
+<div class="container-fluid">
+  <div class="card mt-5 mb-5 mx-auto login-card">
+    <div class="card-body">
+
+      <div *ngIf="error == true" class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{this.errorMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <h5 class="card-title">Welcome! Please register</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Enter your details below to create an account.</h6>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerModel)">
+        <formly-form [model]="registerModel" [fields]= "registerFields"
+                     [form]="registerForm">
+          <button [disabled]="registerForm.invalid" type="submit"
+                  mat-raised-button>Register</button>
+        </formly-form>
+      </form>
+    </div>
+  </div>
 </div>

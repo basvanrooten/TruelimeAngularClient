@@ -10,7 +10,9 @@
   </div>
   <div class="col">
     <div class="example-container">
-      <h6>Current Skills</h6> <!-- Username? -->
+      <h6>
+          Current Skills & Attached Levels
+      </h6>
       <div cdkDropList #skillListUser="cdkDropList" [cdkDropListData]="userSkillList" [cdkDropListConnectedTo]="[collectionlist]"
         class="example-list" (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let s of userSkillList" cdkDrag>{{ s.name }}
