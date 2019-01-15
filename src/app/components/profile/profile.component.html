@@ -105,7 +105,7 @@
                       <div *ngFor="let assessment of profileUserAssessments; let i = index;">
                         <li *ngIf="i < 3">
                           <h5>{{assessment?.split(',')[0]}}</h5>
-                          <p>Attempted score: {{assessment?.split(',')[1]}}%</p>
+                          <p>Attempted score: {{assessment?.split(',')[1]/100 | percent}}</p>
                         </li>
                       </div>
                       <div>
