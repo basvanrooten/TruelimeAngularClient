@@ -14,8 +14,9 @@
                   <div class="col-9">
                     <h1>{{ userDetails?.firstName }} {{ userDetails?.lastName }}</h1>
                     <p>{{ userDetails?.email }}</p>
-                    <button type="button" class="btn" style="background-color: orangered; color: white" (click)="editToggle()">Edit
+                    <button type="button" class="btn" style="background-color: orangered; color: white; width: 100px" (click)="editToggle()" *ngIf="!editMode">Edit
                       profile</button>
+                    <button type="button" class="btn" style="background-color: orangered; color: white; width: 100px" (click)="editToggle()" *ngIf="editMode">Save</button>
                   </div>
                 </div>
               </div>
@@ -59,11 +60,10 @@
                       <h5>Skills</h5>
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
-                          <span *ngFor="let skill of profileUserSkills;" class="badge badge-pill badge-secondary m-1" style="color: black; background-color: ghostwhite; backdrop-filter: drop-shadow(5px); font-size: 16px; font-weight: normal; padding-left: 20px; padding-right: 20px">{{skill?.split(',')[0]}}
-                            <div>
-                              <h5 class="badge badge-pill badge-secondary m-1" style="background-color: orangered">{{skill?.split(',')[1]}}</h5>
-                            </div>
-                          </span>
+                          <div *ngFor="let skill of profileUserSkills;">
+                            <li class="badge badge-pill badge-secondary m-1">{{skill?.split(',')[0]}}</li>
+                            <li class="badge badge-pill badge-secondary m-1" style="background-color: orangered">{{skill?.split(',')[1]}}</li>
+                          </div>
                           <p *ngIf="profileUserSkills == undefined || profileUserSkills.length == 0">This user doesn't
                             have skills yet.</p>
                         </div>
@@ -78,9 +78,9 @@
                       <h5>Certificates</h5>
                       <div *ngIf="this.editMode === false">
                         <div class="skills-badges">
-                          <span *ngFor="let certificate of profileUserCertificates;" class="badge badge-pill badge-secondary m-1" style="font-size: 16px; padding: 10px; background-color: ghostwhite; font-weight: normal; color: black">{{certificate}}
+                          <span *ngFor="let certificate of profileUserCertificates;">
                             <div>
-                              <h5 class="badge badge-pill badge-secondary m-1" style="background-color: orangered"></h5>
+                              <li class="badge badge-pill badge-secondary m-1">{{certificate}}</li>
                             </div>
                           </span>
                           <p *ngIf="profileUserCertificates == undefined || profileUserCertificates.length == 0">This
@@ -92,7 +92,7 @@
                       </div>
                     </div>
                     <hr>
-                    <div class="assessments">
+                    <div class="assessments" *ngIf="!editMode">
                       <h5>Assessments</h5>
                       <app-assessment-result-table>Loading assessments</app-assessment-result-table>
                     </div>
