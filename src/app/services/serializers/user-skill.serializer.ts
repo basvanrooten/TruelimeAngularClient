@@ -1,6 +1,5 @@
 import { Skill } from '../../models/skill.model';
 import { SkillService } from '../skill.service';
-import { resolve } from 'q';
 
 export class UserSkillSerializer {
 
