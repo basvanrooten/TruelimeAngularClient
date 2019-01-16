@@ -2,7 +2,7 @@
 /*@import "scss/trueLime/all.css";*/
 /*@import "scss/trueLime/variables.scss";*/
 /* @import "~@progress/kendo-theme-bootstrap/scss/all.scss"; */
-/*@import '@angular/material/prebuilt-themes/indigo-pink.css';*/
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "http://fonts.googleapis.com/icon?family=Material+Icons";
 @import "http://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css";
