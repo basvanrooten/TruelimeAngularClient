@@ -42,7 +42,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CertificateMenuComponent } from './components/certificate-menu/certificate-menu.component';
 import { AssessmentResultTableComponent } from './components/assessment-result-table/assessment-result-table.component';
 
-@NgModule({
+@NgModule({//
   declarations: [
     AppComponent,
     HeaderComponent,
